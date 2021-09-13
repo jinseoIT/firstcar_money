@@ -1,0 +1,23 @@
+#regist_Frame{
+    display: block;
+border : solid black;
+    width:300px;
+margin: 15% auto 50px auto;
+
+}
+#Home{
+    text-align: center;
+    font-size: 25px;
+}
+
+#buttons{
+    text-align: center;
+}
+
+#ID_Input, #Nick_Input, #passWord_Input,#passWord_Access_Input{
+ margin-left: 5%;
+   width: 250px;
+}
+#ID,#Nick,#passWord,#passWord_Access{
+    margin-left: 5%;
+}
