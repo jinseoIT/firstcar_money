@@ -1,11 +1,16 @@
 from pymongo import MongoClient
 from flask import Flask, render_template, jsonify, request
+<<<<<<< HEAD
 import os
 from dotenv import load_dotenv
 load_dotenv(verbose=True)
 dbId = os.getenv('DB_ADMIN_ID')
 dbPw = os.getenv('DB_ADMIN_PW')
 
+=======
+
+import account
+>>>>>>> de009fb51746623f24dc058efaa192a141aa2786
 
 app = Flask(__name__)
 
@@ -71,6 +76,7 @@ def register_Process_User():
     # }
     # db.Users.insert_one(doc)
 
+<<<<<<< HEAD
 @app.route('/car/list', methods=['GET'])
 def getCarList():
     page = int(request.args.get('page', 1))
@@ -79,6 +85,8 @@ def getCarList():
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
     print('왜안되나영')
     return jsonify({ "success": False , "car_list" : car_list })
+=======
+>>>>>>> de009fb51746623f24dc058efaa192a141aa2786
 
 
 
