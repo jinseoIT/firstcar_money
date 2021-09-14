@@ -1,7 +1,6 @@
 from flask import render_template, Blueprint, request, jsonify
 from pymongo import MongoClient
 import os
-from dotenv import load_dotenv
 
 api_car = Blueprint('api_car', __name__, template_folder="templates")
 
@@ -14,15 +13,21 @@ client = MongoClient(
                                            '=majority')
 db = client.dbfirtcar
 
-@api_car.route('/carList')
+# 차량 리스트 페이지
+@api_car.route('/car-list')
 def home():
-    return render_template('carList.html')
-
-@api_car.route('/api/carList', methods=['GET'])
-def getCarList():
     page = int(request.args.get('page', 1))
-    limit = 10
+    limit = 24
     offset = (page - 1) * limit
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
-    print('왜안되나영')
+    return render_template('carList.html', carList=car_list)
+
+# 차량 리스트 호출 API
+@api_car.route('/api/car-list', methods=['GET'])
+def getCarList():
+    page = int(request.args.get('page', 1))
+    limit = 12
+    offset = (page - 1) * limit
+    car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
+
     return jsonify({"success": False, "car_list": car_list})

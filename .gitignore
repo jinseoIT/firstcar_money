@@ -3,4 +3,4 @@ __pycache__
 .env
 venv
 init_db.py
-
+.vscode

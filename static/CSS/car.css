@@ -1,0 +1,87 @@
+ /* car_select_area */
+
+.car_select_area {
+  display: flex;
+  margin-top : 50px;
+}
+
+.car_select_area a.active {
+  color:#13CE66;
+}
+
+.car_select_area .order_icon {
+  margin-right: 5px;
+  color: #000;
+  display: none;
+}
+
+.car_select_area .order_icon.on {
+  color: #000;
+  display: block;
+}
+
+
+.car_select_area .order_icon.active {
+  display: block;
+}
+
+.car_select_area .order_text {
+  margin-right: 15px;
+}
+
+
+/* car_card */
+.car_card_area {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.car_card {
+  height: 330px;
+  width: 275px;
+  background-color: #fff;
+  margin-right: 2px;
+}
+
+.car_card .card_img_area {
+  width: 225px;
+  height: 170px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.car_card .card_img_area img {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  width: 100%;
+  object-fit: cover;
+  transition: all ease-in 200ms;
+}
+.car_card .card_img_area img:hover {
+  position: relative;
+  transform: translateX(-20px);
+}
+
+.car_card strong {
+  margin-right: 45px;
+  display: block;
+}
+.car_card dl {
+  float: left;
+  display: inline-block;
+  padding-top: 9px;
+  vertical-align: top;
+}
+
+.car_card dl dt {
+  float: left;
+  width: 33px;
+  color: #000;
+  opacity: .5;
+}
+
+.car_card .price{
+  color: #de3d3d;
+}

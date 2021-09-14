@@ -2,18 +2,74 @@
 <html lang="en">
 <head>
     {% include '/common/head.html' %}
+    <link rel="stylesheet" href="../static/CSS/car.css">
 </head>
 <body>
     <!-- header  -->
   {% include '/common/header.html' %}
 
 
-    <i class="fas fa-sort-up"></i>
-    <i class="fas fa-sort-down"></i>
-    <button>가격순</button>
-    <button>연비순</button>
-    <button>출시순</button>
+      <!-- 차량 정렬 -->
+  <section class="car_order container">
+    <div class="row">
+        <div class="col-12 car_select_area">
+          <a href="#" class="order_icon active">
+            <i class="fas fa-sort-up"></i>
+          </a>
+          <a href="#" class="order_icon">
+            <i class="fas fa-sort-down"></i>
+          </a>
+          <a href="#" class="order_text active">가격순</a>
+
+          <a href="#" class="order_icon on">
+            <i class="fas fa-sort-up"></i>
+          </a>
+          <a href="#" class="order_icon">
+            <i class="fas fa-sort-down"></i>
+          </a>
+          <a href="#" class="order_text">연비순</a>
+
+          <a href="#" class="order_icon on">
+            <i class="fas fa-sort-up"></i>
+          </a>
+          <a href="#" class="order_icon">
+            <i class="fas fa-sort-down"></i>
+          </a>
+          <a href="#" class="order_text">출시순</a>
+        </div>
+    </div>
+  </section>
 <hr>
+
+    <!-- 차량 목록 -->
+  <section class="container">
+    <div class="row">
+      <div class="col-12 car_card_area">
+
+        <!--  차량 카드   -->
+          {% for carInfo in carList %}
+            <div class="car_card">
+              <div class="card_img_area">
+                <img src="{{ carInfo.car_img }}">
+              </div>
+              <strong>{{ carInfo.car_name }}</strong>
+              <dl>
+                <dt>가격</dt>
+                <dd class="price">{{ carInfo.car_price_full }}</dd>
+                <dt>연식</dt>
+                <dd>{{ carInfo.car_age }}</dd>
+                <dt>연비</dt>
+                <dd>{{ carInfo.car_fuel_efficiency}}</dd>
+                <dt>연료</dt>
+                <dd>{{ carInfo.car_fuel }}</dd>
+              </dl>
+            </div>
+        {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
 
 <script>
    const orderFtn = (key, orderType) => {
