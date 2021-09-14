@@ -1,4 +1,8 @@
 /* Reset Css */
+
+/* Spoqa Han Sans 서체 작용*/
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
 a {
   color: inherit; /* 부모 color색 상속 */
   text-decoration: none;
@@ -37,4 +41,11 @@ p {
   line-height: 1.5;
   color: #2b292d;
   letter-spacing: -0.01em;
+}
+
+button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
 }

@@ -16,6 +16,10 @@
   padding: 8px 12px;
 }
 
+.header__title img{
+  width : 50px;
+}
+
 .header__title,
 .header__menu {
   flex: none;
@@ -82,7 +86,7 @@
 
 
 @media screen and (max-width: 768px){
-  
+
   /* header */
   .header__container nav {
     flex-direction: column;
@@ -120,7 +124,7 @@
   .header__account.active {
     display: flex;
   }
-  
+
 }
 
 /* Custom Grid System - Fix container width*/

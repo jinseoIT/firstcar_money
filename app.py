@@ -1,3 +1,4 @@
+from pip._vendor import requests
 from pymongo import MongoClient
 from flask import Flask, render_template, jsonify, request
 import RegistLogin
@@ -74,5 +75,16 @@ def getCarList():
     return jsonify({"success": False, "car_list": car_list})
 
 
+@app.route('/detail')
+def detail():
+    return render_template('detail.html')
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+
+
+
+
+
+
