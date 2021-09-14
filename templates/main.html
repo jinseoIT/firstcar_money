@@ -4,6 +4,53 @@
     {% include '/common/head.html' %}
     <link rel="stylesheet" href="/static/CSS/video.css">
     <script src="/static/JS/youtube.js" defer></script>
+
+    <style>
+        .container {
+            justify-content: space-between;
+            justify-content: center;
+            display: flex;
+            margin: auto;
+        }
+        .page{
+            display: flex;
+            flex-direction: column;
+            border-collapse: separate;
+            width: 500px;
+            height: 500px;
+        }
+        .text{
+            display: inline-block;
+            margin: 30px auto 0 auto;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .img{
+            background-position: center;
+            background-size: cover;
+            width: 450px;
+            height: 500px;
+            background-image: url("https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_554173_16231543004673401.jpg");
+            margin: 10px auto 0 auto;
+            transition: .2s;
+        }
+        .img:hover{
+            transform: scale(1.05);
+        }
+
+        .btn {
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            margin: 20px auto 20px auto;
+            background-color: #0066ff;
+            color: white;
+            border-radius: 10px;
+            border: 0;
+            outline: 0;
+
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +66,20 @@
 
   <!-- 차량 링크 -->
   <section>
-
+    <div class="container">
+        <div class="page">
+            <a href="#" class="text">연봉별 차량 보러가기</a>
+            <hr width="95%">
+            <a href="#" class="img"></a>
+            <button class="btn">연봉별 차량 보러가기</button>
+        </div>
+        <div class="page">
+            <a href="#" class="text">국내 차량 보러가기</a>
+            <hr width="95%">
+            <a href="#" class="img"></a>
+            <button class="btn">국내 차량 보러가기</button>
+        </div>
+    </div>
   </section>
 </body>
 </html>
