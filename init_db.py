@@ -128,4 +128,3 @@ def insert_cars():
 
 ## 실행하기
 insert_cars()
-#get_urls()

@@ -1,0 +1,38 @@
+/* YOUTUBE VIDEO */
+.youtube {
+  position: relative;
+  height: 550px;
+  background-color: #000;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.youtube .youtube__area{
+  width: 1920px; 
+  background-color: #000;
+  left: 50%;
+  top: 50%;
+}
+.youtube .youtube__area::before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+}
+
+#player {
+  width:100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 768px){
+  .youtube {
+    height: 300px;
+  }
+  
+}
+

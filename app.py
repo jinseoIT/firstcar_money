@@ -20,7 +20,7 @@ db = client.dbfirtcar
 # main
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('main.html')
 
 
 @app.route('/user/emailChk')

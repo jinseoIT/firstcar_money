@@ -1,0 +1,40 @@
+/* Reset Css */
+a {
+  color: inherit; /* 부모 color색 상속 */
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+button,
+input,
+textarea {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+  outline: none;
+  box-shadow: none;
+}
+
+ul,
+ol,
+li {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2b292d;
+  letter-spacing: -0.01em;
+}
