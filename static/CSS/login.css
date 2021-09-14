@@ -3,7 +3,7 @@
     border: 2px solid darkgray;
     border-radius: 5px;
     width: 300px;
-    padding-bottom: 30px;
+    padding-bottom: 80px;
     padding-left: 30px;
     padding-right: 30px;
     margin: 10% auto 50px auto;
@@ -23,28 +23,24 @@
     color: inherit;
 }
 
-
 #buttons {
-
-
     display: block;
-
     margin-left: 50px;
     margin-top: 30px;
 }
 
-#cancel_button {
+#Regist_button {
     font-size: 5px;
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
     border: none;
     color: white;
-    background-color: red;
+    background-color: limegreen;
     margin-left: 60px;
 
 }
 
-#Access_button {
+#Login_button {
     font-size: 5px;
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
@@ -54,7 +50,7 @@
 }
 
 
-#ID_Input, #Nick_Input, #passWord_Input, #passWord_Access_Input {
+#ID_Input, #passWord_Input {
     padding-top: 5px;
     margin-top: 3%;
     margin-left: 5%;
@@ -62,8 +58,16 @@
     outline-color: darkgray;
 }
 
-#ID, #Nick, #passWord, #passWord_Access {;
+#ID {
+
+    margin-top: 20%;
     font-weight: bolder;
-    margin-top: 20px;
+
+    margin-left: 5%;
+}
+
+#passWord {
+    margin-top: 10%;
+    font-weight: bolder;
     margin-left: 5%;
 }

@@ -1,10 +1,18 @@
 const Email = document.querySelector("#ID_Input")
 const PassWord = document.querySelector("#passWord_Input")
 const Form = document.querySelector("#register_Form")
+const Login_button = document.querySelector("#Login_button")
+const Regist_button = document.querySelector("#Regist_button")
 
-function Login(e) {
+
+function Prevent(e) {
     e.preventDefault()
 
+
+}
+
+function Login() {
+    Form.addEventListener("submit", Prevent)
     const regist_Data = {
         Email: Email.value,
         PassWord: PassWord.value,
@@ -27,9 +35,28 @@ function Login(e) {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                    if (data.Success) {
+
+                        document.cookie = "User" + '=' + data.Token + ";  path=/";
+
+                        window.location = "/"
+                    } else {
+                        alert(data.msg)
+                    }
+
+
+                }
+            )
             .catch(error => console.error('Error:', error));
     }
 }
 
-Form.addEventListener("submit", Login)
+function Regist() {
+    Form.addEventListener("submit", Prevent)
+    window.location = "/user/register"
+}
+
+
+Login_button.addEventListener("click", Login)
+Regist_button.addEventListener("click", Regist)
