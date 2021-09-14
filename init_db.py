@@ -97,13 +97,6 @@ def insert_carInfo(url, pageNum):
         # 차량 가격 - basic
         car_price = tr.select_one('.lst > .price ').text
         car_price = carPriceExp(car_price)
-        # st = car_price.replace("출시", "").replace("만원", "")
-        # arr = []
-        # if st != '가격정보없음':
-        #     arr = st.strip().split("~")
-        #     car_price = arr[0]
-        # else:
-        #     car_price = 0
 
         doc = {
             'car_name': car_name,
@@ -124,14 +117,42 @@ def insert_carInfo(url, pageNum):
 def carPriceExp(text):
     car_price = ''
     st = text.replace("출시", "").replace("만원", "")
+    rateYn = 0 if text.find("만원") != -1 else 1
     arr = []
     if st != '가격정보없음':
         arr = st.strip().split("~")
         car_price = arr[0]
+        if rateYn:
+            car_price = priceRate(arr)
     else:
         car_price = 0
 
+    if type(car_price) is str:
+        car_price = car_price.replace(',', '')
+        if car_price.find('억') != '억':
+            car_price = car_price.replace('억', '')
+
     return car_price
+
+# 가격 환율
+def priceRate(priceArr):
+    arr = ['파운드', '달러', '루피', '유로']
+    exchange = ''
+    #print(price)
+    for price in priceArr:
+        for rate in arr:
+            if price.find(rate) != -1:
+                if rate == '파운드':
+                    exchange = round(int(priceArr[0].replace(',','').replace('파운드','')) * 1623 / 10000)
+                elif rate == '달러':
+                    exchange = round(int(priceArr[0].replace(',','').replace('달러', '')) * 1168 / 10000)
+                elif rate == '루피':
+                    exchange = round(int(priceArr[0].replace(',','').replace('루피', '')) * 16 / 10000)
+                elif rate == '유로':
+                    exchange = round(int(priceArr[0].replace(',','').replace('유로', '')) * 1382 / 10000)
+                else: print('아무것도 안함')
+    return exchange
+
 
 # 차량 연식 정규화
 def carAgeExp(text):
@@ -152,7 +173,6 @@ def carFuelEffiExp(text):
 
 # 연비 통일화
 def crulEffi(effi):
-    print(effi)
     st = effi.split('/')
     value = float(st[0].strip('km/ℓWhmpg'))
 
