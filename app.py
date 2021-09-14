@@ -1,8 +1,11 @@
 from pymongo import MongoClient
-from flask import Flask, render_template, jsonify, request
+from flask import  Flask, render_template, request
 import RegistLogin
 import os
 from dotenv import load_dotenv
+
+import account
+import car
 
 load_dotenv(verbose=True)
 
@@ -10,6 +13,8 @@ dbId = os.getenv('DB_ADMIN_ID')
 dbPw = os.getenv('DB_ADMIN_PW')
 
 app = Flask(__name__)
+app.register_blueprint(car.api_car)
+app.register_blueprint(account.app_account)
 
 client = MongoClient(
     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
@@ -62,16 +67,6 @@ def register_Process_User():
     PassWord_Access = user_Datas["PassWord_Access"]
     res = RegistLogin.check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access)
     return res
-
-
-@app.route('/car/list', methods=['GET'])
-def getCarList():
-    page = int(request.args.get('page', 1))
-    limit = 10
-    offset = (page - 1) * limit
-    car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
-    print('왜안되나영')
-    return jsonify({"success": False, "car_list": car_list})
 
 
 if __name__ == '__main__':

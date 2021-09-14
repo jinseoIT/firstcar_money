@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {% include '/common/head.html' %}
 </head>
 <body>
-  <h2>자동차 페이지</h2>
-    <h3>Hello, {{carname}}</h3>
+    <!-- header  -->
+  {% include '/common/header.html' %}
+
+
+    <i class="fas fa-sort-up"></i>
+    <i class="fas fa-sort-down"></i>
+    <button>가격순</button>
+    <button>연비순</button>
+    <button>출시순</button>
+<hr>
+
+<script>
+   const orderFtn = (key, orderType) => {
+       apiGetOrder(key, orderType)
+   }
+
+   const apiGetOrder = (type, orderType) => {
+       let url = '';
+       if (type == 'price'){
+           url = '/api/getCarOrder?orderType='+orderType
+       }
+       fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+   }
+
+
+</script>
+
 </body>
 </html>
