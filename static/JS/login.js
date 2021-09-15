@@ -7,12 +7,10 @@ const Regist_button = document.querySelector("#Regist_button")
 
 function Prevent(e) {
     e.preventDefault()
-
-
 }
 
-function Login() {
-    Form.addEventListener("submit", Prevent)
+function Login(e) {
+    e.preventDefault()
     const regist_Data = {
         Email: Email.value,
         PassWord: PassWord.value,
@@ -28,7 +26,7 @@ function Login() {
         return alert("모든 칸을 작성해 주세요")
     } else {
 
-        fetch("/user/login_Process", {
+        fetch("/user/login-Process", {
             method: 'POST',
             body: JSON.stringify(regist_Data),
             headers: {
@@ -36,18 +34,14 @@ function Login() {
             }
         }).then(res => res.json())
             .then(data => {
-                    if (data.Success) {
-
-                        document.cookie = "User" + '=' + data.Token + ";  path=/";
-
+                    if (data.success) {
+                        document.cookie = "token" + '=' + data.Token + ";  path=/";
+                        localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
                         window.location = "/"
                     } else {
                         alert(data.msg)
                     }
-
-
-                }
-            )
+            })
             .catch(error => console.error('Error:', error));
     }
 }

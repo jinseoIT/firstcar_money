@@ -1,4 +1,3 @@
-from pip._vendor import requests
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
 
@@ -9,6 +8,7 @@ import RegistLogin
 import account
 import car
 import moneyhope
+
 load_dotenv(verbose=True)
 
 dbId = os.getenv('DB_ADMIN_ID')
@@ -53,7 +53,6 @@ def register_User():
     return render_template('register.html')
 
 
-
 @app.route("/user/register_Process", methods=['POST'])
 def register_Process_User():
     user_Datas = request.get_json()
@@ -62,7 +61,7 @@ def register_Process_User():
     user_Nick = user_Datas["Nick"]
     user_PassWord = user_Datas["PassWord"]
     PassWord_Access = user_Datas["PassWord_Access"]
-    res = RegistLogin.check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access)
+    res = RegistLogin.check_Regist(user_Email, user_Nick, user_PassWord, PassWord_Access)
     return res
 
 
@@ -76,11 +75,6 @@ def getCarList():
     return jsonify({"success": False, "car_list": car_list})
 
 
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
-
-
-
-
-
-

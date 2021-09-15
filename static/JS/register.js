@@ -29,7 +29,7 @@ function Submit() {
     else if ("" == regist_Data.Nick || "" == regist_Data.PassWord || "" == regist_Data.PassWord_Access) {
         return alert("모든 칸을 작성해 주세요")
     } else {
-        fetch("/user/register_Process", {
+        fetch("/user/register-Process", {
             method: 'POST',
             body: JSON.stringify(regist_Data),
             headers: {

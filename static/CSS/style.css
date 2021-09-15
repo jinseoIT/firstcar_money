@@ -84,6 +84,12 @@
   color: var(--text-color);
 }
 
+.footer__container {
+  height: 120px;
+  background: #2b292d;
+  margin-top: 50px;
+}
+
 
 @media screen and (max-width: 768px){
 

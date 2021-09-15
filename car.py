@@ -14,10 +14,10 @@ client = MongoClient(
 db = client.dbfirtcar
 
 # 차량 리스트 페이지
-@api_car.route('/car-list')
+@api_car.route('/car/list')
 def home():
     page = int(request.args.get('page', 1))
-    limit = 24
+    limit = 16
     offset = (page - 1) * limit
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
     return render_template('carList.html', carList=car_list)
