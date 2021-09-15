@@ -1,0 +1,27 @@
+#yourMoney,
+#yearmoney {
+  margin-top: 3%;
+  margin-left: 10%;
+}
+#realImage {
+  width: 300px;
+}
+#Image {
+  size: 500px;
+  width: 200px;
+  display: block;
+  border: solid green;
+}
+#Desc {
+  width: 200px;
+  margin-left: 400px;
+  display: block;
+  border: solid red;
+}
+#Total {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  display: block;
+  border: solid black;
+}

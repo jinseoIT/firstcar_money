@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     {% include '/common/head.html' %}
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
-{% include '/common/header.html' %}
-<form id="moneyForm">
-    <input id="yourMoney" type="text">
-</form>
+    <link rel="stylesheet" href="/static/CSS/money.css" />
+  </head>
+  <body>
+    {% include '/common/header.html' %}
+    <h2 id="yearmoney">연봉</h2>
+    <form id="moneyForm" action="/money/cars">
+      <input name="money" id="yourMoney" type="text" />
+        <button type="submit">확인</button>
 
-<script src="../static/JS/moneycar.js"></script>
-</body>
+    </form>
+    {% for i in data %}
+
+    <div id="Total">
+      <div id="Image"><img id="realImage" src= {{ i["car_img"] }} ></div>
+      <div id="Desc">
+        <h5>
+          차 모델 : {{ i["car_name"] }} <br />
+          크기 : {{ i["car_type"] }} <br />
+          차 가격 : {{ i["car_price_full"] }} <br />
+          연료 : {{ i["car_fuel"] }} <br />
+          연비 : {{ i["car_fuel_efficiency"] }}
+        </h5>
+      </div>
+    </div>
+
+    {% endfor %}
+  </body>
 </html>

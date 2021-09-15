@@ -28,7 +28,7 @@ function Login() {
         return alert("모든 칸을 작성해 주세요")
     } else {
 
-        fetch("/user/login_Process", {
+        fetch("/user/login-Process", {
             method: 'POST',
             body: JSON.stringify(regist_Data),
             headers: {
