@@ -49,7 +49,11 @@ def check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access):
 def check_Login(user_Email,user_PassWord):
 
     user = db.Users.find_one({"user_Email": user_Email})
+<<<<<<< HEAD
     user_Nick = user["user_Nick"]
+=======
+
+>>>>>>> 82c8efb6a3a6c3a8aa835d2482113e7d23dd9320
     # 아이디 혹은 비밀번호가 틀릴때
     if user == None:
         return jsonify({"Success": False, 'msg': '아이디 혹은 비밀번호가 잘못되었습니다'})
@@ -69,9 +73,13 @@ def check_Login(user_Email,user_PassWord):
                 'exp': datetime.utcnow() + timedelta(seconds=60)
             }
             Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)
+<<<<<<< HEAD
             print(Token)
             print('-------------------')
             print(jwt.decode(Token,jwtKey,algorithms=["HS256"]))
 
+=======
+            userInfo = { 'userId': user_id, 'userName' : user['user_Nick']}
+>>>>>>> 82c8efb6a3a6c3a8aa835d2482113e7d23dd9320
 
-            return jsonify({"Success": True, "Token": Token})
+            return jsonify({"success": True, "Token": Token, "userInfo": userInfo})
