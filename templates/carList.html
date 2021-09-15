@@ -38,8 +38,8 @@
           <a href="#" class="order_text">출시순</a>
         </div>
     </div>
+    <hr>
   </section>
-<hr>
 
     <!-- 차량 목록 -->
   <section class="container">
@@ -67,11 +67,52 @@
         {% endfor %}
 
         </div>
+
+      <!-- 더보기 -->
+        <div class="more_btn_container">
+          <button onclick="moreList()">
+            더보기
+            <i class="fas fa-caret-down"></i>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- footer  -->
+  {% include '/common/footer.html' %}
+
+
 <script>
+  let page = 1
+  window.onload = () => {
+    init();
+  }
+
+  const init = () => {
+
+  }
+
+  const moreList = () => {
+    page += 1
+    getCarList(page)
+  }
+  const getCarList = (page) => {
+    let url = '/api/car-list'
+    url += '?page=' + page
+    fetch(url, {
+      method: 'GET',
+      headers : {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => console.log(res))
+    .catch((error) => console.log(error))
+
+
+  }
+
+
    const orderFtn = (key, orderType) => {
        apiGetOrder(key, orderType)
    }

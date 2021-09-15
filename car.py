@@ -17,7 +17,7 @@ db = client.dbfirtcar
 @api_car.route('/car/list')
 def home():
     page = int(request.args.get('page', 1))
-    limit = 24
+    limit = 16
     offset = (page - 1) * limit
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
     return render_template('carList.html', carList=car_list)
