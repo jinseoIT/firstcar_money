@@ -72,9 +72,6 @@ def check_Login(user_Email,user_PassWord):
             }
             Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)
 
-            print(Token)
-            print('-------------------')
-            print(jwt.decode(Token,jwtKey,algorithms=["HS256"]))
 
 
             userInfo = { 'userId': user_id, 'userName' : user['user_Nick']}
