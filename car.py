@@ -14,7 +14,7 @@ client = MongoClient(
 db = client.dbfirtcar
 
 # 차량 리스트 페이지
-@api_car.route('/car-list')
+@api_car.route('/car/list')
 def home():
     page = int(request.args.get('page', 1))
     limit = 24
