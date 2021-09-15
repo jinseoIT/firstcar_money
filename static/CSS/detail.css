@@ -3,7 +3,7 @@ section {
 }
 
 section .img_info{
-    padding : 100px;
+    padding : 50px;
     text-align: center;
 }
 
@@ -62,7 +62,7 @@ section .img_info{
     text-decoration: underline;
 }
 .description li{
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 .description span {
     color : #0066ff;
