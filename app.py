@@ -74,7 +74,6 @@ def getCarList():
     offset = (page - 1) * limit
     car_list = list(db.carInfo.find(
         {}, {'_id': False}).limit(limit).skip(offset))
-    print('왜안되나영')
     return jsonify({"success": False, "car_list": car_list})
 
 

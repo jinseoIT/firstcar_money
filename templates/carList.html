@@ -13,27 +13,26 @@
   <section class="car_order container">
     <div class="row">
         <div class="col-12 car_select_area">
-<!--          javascript:getOrder('price','asc'), orderToggle()-->
-          <a href="#" class="order_icon active" onclick="orderToggle(this)">
+          <a href="javascript:getOrder('price_asc')" class="order_icon active">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="javascript:getOrder('price','desc'), orderToggle" class="order_icon">
+          <a href="javascript:getOrder('price_desc')" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
           <a href="javascript:void(0)" class="order_text active">가격순</a>
 
-          <a href="javascript:getOrder('fuel','asc')" class="order_icon on">
+          <a href="javascript:getOrder('fuel_asc')" class="order_icon on">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="javascript:getOrder('fuel','desc')" class="order_icon">
+          <a href="javascript:getOrder('fuel_desc')" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
           <a href="javascript:void(0)" class="order_text">연비순</a>
 
-          <a href="javascript:getOrder('regDt','asc')" class="order_icon on">
+          <a href="javascript:getOrder('regDt_asc')" class="order_icon on">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="javascript:getOrder('regDt','desc')" class="order_icon">
+          <a href="javascript:getOrder('regDt_desc')" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
           <a href="javascript:void(0)" class="order_text">출시순</a>
@@ -85,6 +84,9 @@
 
 
 <script>
+    const orderList = document.getElementsByClassName('order_icon')
+    console.log(orderList)
+    /* init */
   let page = 1
 
   /* 더보기 */
@@ -132,10 +134,8 @@
     document.querySelector('.car_card_area').insertAdjacentHTML('beforeend', str);
   }
 
-   const getOrder = (key, orderType) => {
-
-        console.log(key, orderType);
-       //apiGetOrder(key, orderType)
+   const getOrder = (orderType) => {
+        console.log(orderType);
    }
 
    const apiGetOrder = (type, orderType) => {
