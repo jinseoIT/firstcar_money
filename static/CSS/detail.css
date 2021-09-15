@@ -41,7 +41,7 @@ section .img_info{
 }
 
 .info{
-    background-color: rgba( 255, 255, 255, 0.3 );
+    /*background-color: rgba( 255, 255, 255, 0.3 );*/
     /*padding-right: 20px;*/
 
 }
@@ -65,7 +65,7 @@ section .img_info{
     margin-bottom: 5px;
 }
 .description span {
-    color : grey;
+    color : #0066ff;
     margin-right : 10px;
     font-weight: bold;
 }
