@@ -49,6 +49,22 @@ def check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access):
 def check_Login(user_Email,user_PassWord):
 
     user = db.Users.find_one({"user_Email": user_Email})
+<<<<<<< HEAD
+    print(user)
+    user_Nick = user["user_Nick"]
+    print(user_Nick)
+
+
+=======
+
+    user_Nick = user["user_Nick"]
+
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 5b5ac3b449b7f18fd2febe5bf0c93d57fc530793
+>>>>>>> 95d888cf955d47f6eaf9811801d9e7bf3618605d
     # 아이디 혹은 비밀번호가 틀릴때
     if user == None:
         return jsonify({"Success": False, 'msg': '아이디 혹은 비밀번호가 잘못되었습니다'})
@@ -64,8 +80,29 @@ def check_Login(user_Email,user_PassWord):
             user_id = (str(user["_id"]))
             jwtPayload = {
                 "id": user_id,
+                "nick": user_Nick,
                 'exp': datetime.utcnow() + timedelta(seconds=60)
             }
             Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 95d888cf955d47f6eaf9811801d9e7bf3618605d
 
-            return jsonify({"Success": True, "Token": Token})
+            print(Token)
+            print('-------------------')
+            print(jwt.decode(Token,jwtKey,algorithms=["HS256"]))
+
+
+<<<<<<< HEAD
+=======
+=======
+
+
+
+>>>>>>> 5b5ac3b449b7f18fd2febe5bf0c93d57fc530793
+>>>>>>> 95d888cf955d47f6eaf9811801d9e7bf3618605d
+            userInfo = { 'userId': user_id, 'userName' : user['user_Nick']}
+
+
+            return jsonify({"success": True, "Token": Token, "userInfo": userInfo})

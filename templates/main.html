@@ -4,82 +4,54 @@
     {% include '/common/head.html' %}
     <link rel="stylesheet" href="/static/CSS/video.css">
     <script src="/static/JS/youtube.js" defer></script>
+    <link rel="stylesheet" href="../static/CSS/main.css">
 
-    <style>
-        .container {
-            justify-content: space-between;
-            justify-content: center;
-            display: flex;
-            margin: auto;
-        }
-        .page{
-            display: flex;
-            flex-direction: column;
-            border-collapse: separate;
-            width: 500px;
-            height: 500px;
-        }
-        .text{
-            display: inline-block;
-            margin: 30px auto 0 auto;
-            font-weight: bold;
-            font-size: 24px;
-        }
-        .img{
-            background-position: center;
-            background-size: cover;
-            width: 450px;
-            height: 500px;
-            background-image: url("https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_554173_16231543004673401.jpg");
-            margin: 10px auto 0 auto;
-            transition: .2s;
-        }
-        .img:hover{
-            transform: scale(1.05);
-        }
-
-        .btn {
-            font-weight: bold;
-            display: block;
-            padding: 10px;
-            margin: 20px auto 20px auto;
-            background-color: #0066ff;
-            color: white;
-            border-radius: 10px;
-            border: 0;
-            outline: 0;
-
-        }
     </style>
-</head>
-<body>
-
-  <!-- header  -->
-  {% include '/common/header.html' %}
-
-  <!-- youtube -->
-  <section class="youtube container-fluid">
-    <div class="youtube__area row">
-        <div id="player" class="video col-12"></div>
-    </div>
-  </section>
-
-  <!-- 차량 링크 -->
-  <section>
-    <div class="container">
-        <div class="page">
-            <a href="#" class="text">연봉별 차량 보러가기</a>
-            <hr width="95%">
-            <a href="#" class="img"></a>
-            <button class="btn">연봉별 차량 보러가기</button>
-        </div>
-        <div class="page">
-            <a href="#" class="text">국내 차량 보러가기</a>
-            <hr width="95%">
-            <a href="#" class="img"></a>
-            <button class="btn">국내 차량 보러가기</button>
-        </div>
-    </div>
-  </section>
-</body>
+        </head>
+        <body>
+        <!-- header  -->
+        {% include '/common/header.html' %}
+        <!-- youtube -->
+        <section class="youtube container-fluid">
+            <div class="youtube__area row">
+                <div id="player" class="video col-12"></div>
+            </div>
+        </section>
+        <!-- 차량 링크 -->
+        <section class="container">
+            <div class="linkPage">
+                <div class="page">
+                    <a href="#" class="text">연봉별 차량 보러가기</a>
+                    <hr width="95%">
+                    <a href="#" class="img"></a>
+                    <button class="btn">연봉별 차량 보러가기</button>
+                </div>
+                <div class="page">
+                    <a href="#" class="text">국내 차량 보러가기</a>
+                    <hr width="95%">
+                    <a href="#" class="img2"></a>
+                    <button class="btn">국내 차량 보러가기</button>
+                </div>
+            </div>
+        </section>
+        <!-- 중고차 사이트 링크 -->
+        <section>
+            <div class="site"> 중고차 사이트 TOP4</div>
+            <div class="site_content">신차가 부담되는 사회초년생들을 위한 중고차 사이트를 소개합니다</div>
+            <br width="100%">
+            <div class="usedCarTop4">
+                <div class="usedCarSite">
+                    <a target="_blank" href="https://www.kcar.com/index.do?gclid=Cj0KCQjws4aKBhDPARIsAIWH0JWU5NPEJ2suy-0MyhYyaqhuM_O6Ra5CtkiAWGpfg8mWhIr-C0wWm0gaAkkdEALw_wcB" class="usedCar_a">
+                    </a>
+                    <a target="_blank" href="https://www.kbchachacha.com/?la_gc=TR10062602448&la_src=sa&la_cnfg=134149&gclid=Cj0KCQjws4aKBhDPARIsAIWH0JV4jAcL1q3CYB5XQMBpcKxp1cFGn_-0C4GSBr_fsW9NhYiylu9yxfIaAjUxEALw_wcB" class="usedCar_b">
+                    </a>
+                    <a target="_blank" href="http://www.encar.com/index.do" class="usedCar_c">
+                    </a>
+                    <a target="_blank" href="https://www.autobell.co.kr:444/main.do?utm_source=google&utm_medium=cpc&utm_campaign=2021june&utm_content=pc_ppl_1&utm_term=%EC%98%A4%ED%86%A0%EB%B2%A8&gclid=Cj0KCQjws4aKBhDPARIsAIWH0JW-AKG_Cw5tym3yT_2YoER5YYDZlk-G1M5tKCfpYbZHgDyqKsFIAZgaAmB_EALw_wcB" class="usedCar_d">
+                    </a>
+                </div>
+            </div>
+        </section>
+    {% include '/common/footer.html' %}
+    </body>
 </html>
