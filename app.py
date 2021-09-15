@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, make_response, redirect
 
 import os
 from dotenv import load_dotenv
@@ -72,6 +72,14 @@ def getCarList():
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
     print('왜안되나영')
     return jsonify({"success": False, "car_list": car_list})
+
+
+
+@app.route('/user/logout', methods=['GET'])
+def logout():
+    resp = make_response(render_template('main.html'))
+    resp.delete_cookie('token')
+    return resp
 
 
 @app.route('/detail')
