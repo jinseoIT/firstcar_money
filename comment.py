@@ -83,7 +83,17 @@ def deleting():
     return jsonify({"success": False, 'msg' : '삭제 완료했습니다.'})
 
 
-# 댓글 수정
+# # 댓글 수정
+@api_comment.route('/api/comment-modi', methods=['POST'])
+def modifing():
+    id_receive = request.form['id_give']
+    # print(id_receive)
+    # 이거 어떻게 돌아가누
+    result = list(db.comment.find({'_id': ObjectId(id_receive)}, {'_id': False}))
+    # test = db.comment.delete_one({'_id' : id_receive})
+    # test = db.comment.delete_one({'_id': {"$oid": str(id_receive)}})
+    print(result)
+    return jsonify({"success": False, "result" : result})
 
 
 

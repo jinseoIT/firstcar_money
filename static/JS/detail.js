@@ -35,14 +35,14 @@
 
 
 // 몽고 db에 데이터 넣어보기
-
+const modifiy_input = document.querySelector(".motify_input");
 const textarea = document.querySelector(".comment_area");
 const submitBtn = document.querySelector(".submitBtn");
 const ul_tag = document.querySelector(".comment_list");
 const deleteBtn = document.querySelector(".delete");
 const modifiBtn = document.querySelector(".modified");
 let realComment = document.querySelector(".comment");
-
+const confirmBtn = document.querySelector(".confirmBtn");
 let nickname = "kyusikko";
 let currentTime = "2021-09-15";
 
@@ -70,7 +70,7 @@ const listComment = function() {
                                 </div>
                                 <div class="comment">${comment}</div>
                                 <div class="buttons-group">
-                                    <button class="modified"><i class="far fa-edit"></i></button>
+                                    <button id = ${comment_id} class="modified" onclick="modifiList(this.id)"><i class="far fa-edit"></i></button>
                                     <button id = ${comment_id} class="delete" onclick="deleteList(this.id)" ><i class="fas fa-trash-alt"></i></button>
                                 </div>`
                 li_tag.innerHTML = list_html;
@@ -116,7 +116,6 @@ const saveDb = function(){
     }
 
 const deleteList = function(parameter){
-    console.log("눌렸따")
     console.log(parameter)
 
      $.ajax({
@@ -136,7 +135,30 @@ const deleteList = function(parameter){
 
 }
 
-// modifiBtn.addEventListener("click", )
+const modifiList = function(parameter){
+    console.log(parameter)
+    console.log("눌렸따")
+
+    $.ajax({
+                    type: "POST",
+                    url: '/api/comment-modi',
+                    // 서버에 데이터를 전달해 준다.
+                    data: {
+                        id_give : parameter
+                    },
+
+                    success: function (response) {
+                        console.log(response.result);
+                        let moText = response.result[0].comment;
+                        modifiy_input.value= moText;
+                        moText
+
+
+
+                    }
+                })
+
+}
 
 
 document.addEventListener("DOMContentLoaded", listComment)
