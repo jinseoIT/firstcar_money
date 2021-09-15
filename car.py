@@ -25,9 +25,11 @@ def home():
 # 차량 리스트 호출 API
 @api_car.route('/api/car-list', methods=['GET'])
 def getCarList():
-    page = int(request.args.get('page', 1))
-    limit = 12
+    page = int(request.args.get('page'))
+    print('request :', request)
+    print('page:', page)
+    limit = 16
     offset = (page - 1) * limit
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
 
-    return jsonify({"success": False, "car_list": car_list})
+    return jsonify({"success": True, "carList": car_list})
