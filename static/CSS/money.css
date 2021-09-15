@@ -1,27 +1,97 @@
 #yourMoney,
 #yearmoney {
-  margin-top: 3%;
-  margin-left: 10%;
+    margin-top: 3%;
+    margin-left: 10%;
 }
+
+#moneyok {
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: red;
+}
+
+#your-min-Money, #your-max-Money {
+    border: solid 1px black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+#money-total {
+    margin-left: 13%;
+
+}
+
+#wave {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: inline;
+
+}
+
 #realImage {
-  width: 300px;
+
+    width: 400px;
 }
+
 #Image {
-  size: 500px;
-  width: 200px;
-  display: block;
-  border: solid green;
+    height: 295px;
+    border-right: 3px gray solid;
+    display: block;
 }
+
 #Desc {
-  width: 200px;
-  margin-left: 400px;
-  display: block;
-  border: solid red;
+    border-left: 3px gray solid;
+    width: 300px;
+    font-size: 25px;
+    padding-left: 30px;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-left: 5px;
+    display: block;
+
 }
+
 #Total {
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-  display: block;
-  border: solid black;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 750px;
+    height: 300px;
+    display: flex;
+    border: solid gray;
+}
+
+#Last-Total {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 750px;
+    height: 150px;
+    display: flex;
+    border: solid gray;
+}
+
+#Last-Desc {
+    width: 300px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 110px;
+    display: block;
+
+}
+
+
+#list {
+    margin-top: 10px;
+}
+
+#Last-realImage {
+    margin-left: 100px;
+    width: 200px;
+
 }

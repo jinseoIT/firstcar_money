@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     {% include '/common/head.html' %}
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="/static/CSS/money.css" />
-  </head>
-  <body>
-    {% include '/common/header.html' %}
-    <h2 id="yearmoney">연봉</h2>
-    <form id="moneyForm" action="/money/cars">
-      <input name="money" id="yourMoney" type="text" />
-        <button type="submit">확인</button>
-
-    </form>
-    {% for i in data %}
-
-    <div id="Total">
-      <div id="Image"><img id="realImage" src= {{ i["car_img"] }} ></div>
-      <div id="Desc">
-        <h5>
-          차 모델 : {{ i["car_name"] }} <br />
-          크기 : {{ i["car_type"] }} <br />
-          차 가격 : {{ i["car_price_full"] }} <br />
-          연료 : {{ i["car_fuel"] }} <br />
-          연비 : {{ i["car_fuel_efficiency"] }}
-        </h5>
-      </div>
+    <link rel="stylesheet" href="/static/CSS/money.css"/>
+</head>
+<body>
+{% include '/common/header.html' %}
+<h2 id="yearmoney">연봉</h2>
+<form id="moneyForm" action="/money/cars">
+    <div id="money-total">
+        <input name="min-money" id="your-min-Money" type="text"/>
+        <h4 id="wave">~</h4>
+        <input name="max-money" id="your-max-Money" type="text"/>
+        <button id="moneyok" type="submit">확인</button>
     </div>
+</form>
 
-    {% endfor %}
-  </body>
+{#<div style="border: solid black" id="drag" draggable="true" >drag</div>#}
+{#<div style="border: solid red" id="finish">finish</div>#}
+
+{% for i in data %}
+    {% if i == data[0] %}
+        <div id="Total">
+            <div id="Image"><img id="realImage" src={{ i["car_img"] }}></div>
+            <div id="Desc">
+                <h5>
+                    차 모델 : {{ i["car_name"] }} <br/>
+                    크기 : {{ i["car_type"] }} <br/>
+                    차 가격 : {{ i["car_price_full"] }} <br/>
+                    연료 : {{ i["car_fuel"] }} <br/>
+                    연비 : {{ i["car_fuel_efficiency"] }}
+                </h5>
+            </div>
+        </div>
+    {% else %}
+        <div id="Last-Total">
+            <div id="Last-Image"><img id="Last-realImage" src={{ i["car_img"] }}></div>
+            <div id="Last-Desc">
+                <h5 id="list">
+                    차 모델 : {{ i["car_name"] }} <br/>
+                    크기 : {{ i["car_type"] }} <br/>
+                    차 가격 : {{ i["car_price_full"] }} <br/>
+                    연료 : {{ i["car_fuel"] }} <br/>
+                    연비 : {{ i["car_fuel_efficiency"] }}
+                </h5>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+{#<script>#}
+{#    const drag = document.querySelector("#drag")#}
+{#const finish = document.querySelector("#finish")#}
+{#    function example(e){#}
+{#        console.log("dragstart")#}
+{#    }#}
+{#    function over(e){#}
+{#        e.preventDefault()#}
+{#       console.log("end")#}
+{#    }#}
+{#    function end(e){#}
+{#        console.log("end")#}
+{#    }#}
+{##}
+{##}
+{##}
+{#    drag.addEventListener("dragstart",example)#}
+{#    finish.addEventListener("dragover",over)#}
+{#    finish.addEventListener("dragend",end)#}
+{##}
+{#</script>#}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
 </html>
