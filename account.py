@@ -18,7 +18,6 @@ def register_Process_User():
 
 @app_login.route('/user/login-Process', methods=['POST'])
 def login_Process_User():
-    print('삼삼')
     user_Datas = request.get_json()
     # 유저가 입력한 아이디, 패스워드
     user_Email = user_Datas["Email"]

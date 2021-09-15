@@ -91,12 +91,32 @@
         </article>
 
         <div class="modal">
-            <input type="text" class="motify_input">
-            <button type="button" class="confirmBtn">수정완료!</button>
-            <button type="button">취소하기</button>
+              <div class="comment_group">
+                  <div class="id_time">
+                      <input type="hidden" id="modal_cmmt_id"/>
+                      <h3 id="modal_nickName">왜</h3>
+                        <span id="modal_reg_dt">218</span>
+                  </div>
+                  <textarea id="modal_content" style="width: 300px"></textarea>
+                  <div class="buttons-group">
+                      <button>취소</button>
+                      <button onclick="updateCmmt()">수정</button>
+                  </div>
+              </div>
+<!--            <textarea style="width: 300px">-->
+<!--            </textarea>-->
+<!--            <button type="button" class="confirmBtn">수정완료!</button>-->
+<!--            <button type="button">취소하기</button>-->
         </div>
 
+        <!-- footer  -->
+        {% include '/common/footer.html' %}
+
         <script src="../static/JS/detail.js"></script>
+
+        <script>
+
+        </script>
     </body>
 </html>
 

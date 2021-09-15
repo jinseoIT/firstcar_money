@@ -196,3 +196,8 @@ article .comment_group span {
 
     }
 }
+
+.modal  {
+    width: 500px;
+    margin: 0 auto;
+}
