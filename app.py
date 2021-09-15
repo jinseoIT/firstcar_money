@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify
 
 import os
 from dotenv import load_dotenv
-
+import comment
 import RegistLogin
 import account
 import car
@@ -19,6 +19,7 @@ app.register_blueprint(car.api_car)
 app.register_blueprint(account.app_account)
 app.register_blueprint(account.app_login)
 app.register_blueprint(moneyhope.app_money)
+app.register_blueprint(comment.api_comment)
 
 client = MongoClient(
     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
@@ -73,12 +74,6 @@ def getCarList():
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
     print('왜안되나영')
     return jsonify({"success": False, "car_list": car_list})
-
-
-@app.route('/detail')
-def detail():
-    return render_template('detail.html')
-
 
 
 if __name__ == '__main__':

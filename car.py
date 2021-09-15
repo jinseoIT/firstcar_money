@@ -31,3 +31,7 @@ def getCarList():
     car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
 
     return jsonify({"success": False, "car_list": car_list})
+
+@api_car.route('/car/detail')
+def detail():
+    return render_template('detail.html')
