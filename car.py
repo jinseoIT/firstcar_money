@@ -59,3 +59,5 @@ def getCarList():
 def detail():
 
     return render_template('detail.html')
+
+
