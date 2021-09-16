@@ -52,7 +52,7 @@
           {% for carInfo in carList %}
             <div class="car_card">
               <div class="card_img_area">
-                <img src="{{ carInfo.car_img }}">
+                  <a href="/car/detail/{{ carInfo._id }}"><img src="{{ carInfo.car_img }}"></a>
               </div>
               <strong>{{ carInfo.car_name }}</strong>
               <dl>
@@ -115,11 +115,13 @@
   const addCarList = (list, reqType) => {
     let type =  reqType == 'more' ? 'more' : 'order';
     let str = '';
-    console.log(list)
+
     for (let i=0; i<list.length;i+=1) {
       str += `<div class="car_card">
         <div class="card_img_area">
+           <a href="/car/detail/${list[i]._id}">
           <img src="${list[i].car_img}">
+           </a>
         </div>
         <strong>${list[i].car_name}</strong>
         <dl>
@@ -211,7 +213,7 @@
   }
   /* 정렬별 차량 호출  */
    const getOrderCarList = (type) => {
-       console.log('type :'+ type);
+
        page = 1; // 페이지 초기화
        g_order = type
        let url = '/api/car-list?page=1&order='+type;

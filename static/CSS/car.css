@@ -114,6 +114,8 @@
   border: 1px solid #DBDEDF;
   padding: 4px 8px;
   margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 50px;
 }
 
 .more_btn_container button:hover {

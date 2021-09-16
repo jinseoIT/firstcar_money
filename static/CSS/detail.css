@@ -20,6 +20,10 @@ section .img_info{
     transform : translateX(-40px)
 }
 
+.car_img .car_photo{
+    width : 300px;
+}
+
 .img_button{
     height : 100%;
     display:flex;
@@ -38,11 +42,11 @@ section .img_info{
 
 }
 
-.img_button .like:hover{
-    background-color: #ff4949;
-    color : white;
-    /* opacity: 0.4; */
-}
+/*.img_button .like:hover{*/
+/*    background-color: #ff4949;*/
+/*    color : white;*/
+/*    !* opacity: 0.4; *!*/
+/*}*/
 
 .info{
     /*background-color: rgba( 255, 255, 255, 0.3 );*/
@@ -53,6 +57,10 @@ section .img_info{
 .company_logo{
     display: flex;
     justify-content: flex-end;
+}
+
+.company_logo .logo_photo{
+    width : 50px;
 }
 
 .description{
