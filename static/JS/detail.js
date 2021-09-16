@@ -274,7 +274,7 @@ const auth =(e)=>{
 
 modalCutBtn.addEventListener("click", closeModal)
 document.addEventListener("DOMContentLoaded", listComment)
-document.addEventListener("DOMContentLoaded", carIdCheck)
+//document.addEventListener("DOMContentLoaded", carIdCheck)
 submitBtn.addEventListener("click", saveDb);
 textarea.addEventListener("click", auth);
 

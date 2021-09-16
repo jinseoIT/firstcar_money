@@ -11,9 +11,38 @@
         <input type="hidden" id="carid_info" value="{{ car_id }}">
         {#     body       #}
         <section class="car_detail">
-
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="img_button">
+                                <div class="car_img">
+                                    <img class="car_photo" src='{{carInfo.car_img}}'
+                                         alt='{{car_name}}'>
+                                </div>
+                                <button class="like">좋아요</button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="info">
+                                <div class="company_logo">
+                                    <button><img class="logo_photo"
+                                            src='{{carInfo.car_maker_img}}'
+                                            alt='{{carInfo.car_name}}'></button>
+                                </div>
+                                <div class="description">
+                                    <h1>{{carInfo.car_name}}</h1>
+                                    <strong>{{carInfo.car_age}}</strong>
+                                    <ul>
+                                         <li><span>가격</span>{{carInfo.car_price_full}}</li>
+                                         <li><span>연비</span>{{carInfo.car_fuel_efficiency}}</li>
+                                         <li><span>연료</span>{{carInfo.car_fuel}}</li>
+                                         <li><span>차타입</span>{{carInfo.car_type}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         </section>
-
         {# 댓글 영역 #}
         <article>
             <div class="container">
