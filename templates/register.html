@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% include '/common/head.html' %}
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel="stylesheet" href="../static/CSS/register.css">
 </head>
 <body>
-<div id="regist_Frame">
-    <form id="register_Form">
-        <div id="Home">
-           <a id="GoHome" href="/"> 첫차money?</a>
+{% include '/common/header.html' %}
+<section class="signin">
+    <h1>회원가입</h1>
+    <div class="signin__card">
+      <h2>
+        <strong><a href="/">첫 차 Money?</a></strong>
+      </h2>
+      <form id="register_Form">
+        <span>아이디</span>
+        <input id="ID_Input" type="text" placeholder="아이디를 입력하세요.">
+        <span>닉네임</span>
+        <input id="Nick_Input" type="text" placeholder="닉네임을 입력하세요.">
+        <span>비밀번호</span>
+        <input id="passWord_Input" type="password" placeholder="비밀번호를 입력하세요.">
+        <span>비밀번호 확인</span>
+        <input id="passWord_Access_Input" type="password" placeholder="다시한번 입력해주세요.">
+        <div class="login__join">
+           <input id="Access_button" type="submit" value="확인">
+          <input id="cancel_button" class="cancel" type="submit" value="취소">
         </div>
-        <div id="ID">
-            아이디
-        </div>
-
-        <input type="text" id="ID_Input">
-
-        <div id="Nick">
-            닉네임
-        </div>
-
-        <input type="text" id="Nick_Input">
-
-        <div id="passWord">
-            비밀번호
-        </div>
-
-        <input  type="password" id="passWord_Input">
-
-        <div  id="passWord_Access">
-            비밀번호 확인
-        </div>
-
-        <input type="password" id="passWord_Access_Input">
-
-        <div id="buttons">
-            <button id="Access_button" type="submit">확인</button>
-            <button id="cancel_button">취소</button>
-        </div>
-
-
-    </form>
+      </form>
+  </div>
+  </section>
 </div>
 <script src="../static/JS/register.js"></script>
-
+{% include '/common/footer.html' %}
 </body>
 </html>
