@@ -22,9 +22,8 @@
   display: block;
 }
 
-
-.car_select_area .order_icon.active {
-  display: block;
+.car_select_area .order_icon.on.active {
+  color:#13CE66;
 }
 
 .car_select_area .order_text {

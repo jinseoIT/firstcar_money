@@ -1,4 +1,4 @@
-from flask import request, Blueprint, Flask, render_template
+from flask import request, Blueprint, Flask, render_template, jsonify
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import random
@@ -18,7 +18,7 @@ db = client.dbfirtcar
 app_money = Blueprint('api_money', __name__, template_folder="templates")
 
 
-@app_money.route('/money/cars')
+@app_money.route('/api/car/from-range')
 def your_money():
     user_min_money = request.args.get("min-money")
     user_max_money = request.args.get("max-money")
@@ -51,3 +51,14 @@ def your_money():
     else:
 
         return render_template('moneycar.html')
+
+
+
+# 연봉별 차량조회 API[test]
+@app_money.route('/api/car/by-money', methods=['GET'])
+def getCarList_byMoney():
+    print('타나')
+    #limit = 5
+    car_list = list(db.carInfo.find({"car_price": {"$gt": 2000, "$lt":3000}}, {'_id': False}))
+
+    return jsonify({"success": True, "carList": car_list})
