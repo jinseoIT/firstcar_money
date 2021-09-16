@@ -1,4 +1,4 @@
-from flask import request, Blueprint, Flask, render_template
+from flask import request, Blueprint, Flask, render_template, jsonify
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import random
@@ -18,36 +18,33 @@ db = client.dbfirtcar
 app_money = Blueprint('api_money', __name__, template_folder="templates")
 
 
-@app_money.route('/money/cars')
+@app_money.route('/api/car/from-range')
 def your_money():
     user_min_money = request.args.get("min-money")
-    user_max_money = request.args.get("max-money")
-    cars = []
-    hope_cars = []
-
     if user_min_money:
-        user_min_money = int(user_min_money.replace(",", ""))
-        user_max_money = int(user_max_money.replace(",", ""))
 
-        user_car = db.carInfo.find({}, {'_id': False})
-        for doc in user_car:
-            if doc["car_price"] == 0:
-                pass
-            elif doc["car_price"] == "":
-                pass
-            else:
-                doc["car_price"] = int(doc["car_price"])
-                cars.append(doc)
+        user_min_money = int(user_min_money.replace(",", "").replace("만원",""))
+        user_max_money = user_min_money + 1000
 
-        for new_doc in cars:
-            if user_min_money <= new_doc["car_price"] <= user_max_money:
-                hope_cars.append(new_doc)
-        if len(hope_cars) < 5:
-            car_5 = random.sample(hope_cars, len(hope_cars))
+        user_car = list(db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}))
+
+        if len(user_car) < 5:
+            car_5 = random.sample(user_car, len(user_car))
         else:
-            car_5 = random.sample(hope_cars, 5)
+            car_5 = random.sample(user_car, 5)
 
         return render_template('moneycar.html', data=car_5)
     else:
 
         return render_template('moneycar.html')
+
+
+
+# 연봉별 차량조회 API[test]
+@app_money.route('/api/car/by-money', methods=['GET'])
+def getCarList_byMoney():
+    print('타나')
+    #limit = 5
+    car_list = list(db.carInfo.find({"car_price": {"$gt": 2000, "$lt":3000}}, {'_id': False}))
+
+    return jsonify({"success": True, "carList": car_list})

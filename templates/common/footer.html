@@ -1,3 +1,62 @@
-<footer class="footer__container">
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    :root {
+        --text-color: #f0f4f5;
+        --text2-color: #808080;
+    }
+   footer .inner {
+       color: var(--text-color);
+       padding: 20px 8px 0 8px;
+       display: flex;
+       margin: auto;
+       max-width: 900px;
+       width: 80%;
+   }
+   footer .item__left {
+       display: flex;
+       flex-flow: column;
+       width: auto;
+   }
+   footer .item__right {
+       width: auto;
+       margin-left: auto;
+   }
+   footer .item__left .item__sub1__text {
+       color: var(--text2-color);
+   }
+   footer .item__right .item__sub2 {
+       color: var(--text2-color);
+   }
+</style>
+</head>
+<body>
+    <footer class="footer__container">
+    <div class="inner">
+        <div class="item__left">
+            <div class="item__sub1">
+                <a href="/">첫 차 Money</a>&nbsp&#183
+                <a href="/car/list">차량 목록</a>&nbsp&#183
+                <a href="/api/car/from-range">연봉별 차량</a>
+                <div class="item__sub1__text">항해99 8조<br>양진성 김규식 김기태 배수인</div>
+            </div>
+            <div class="item__sub1"></div>
+        </div>
+        <div class="item__right">
+            <div class="item__sub2">
+                <div>위 내용에 대한 저작권 및 법적 책임은 없으며 <br>
+                    항해99 8조 미니프로젝트로 만든 것이니 재미있게 봐주세요. <br>
+                    HangHae99 Team-8 MiniProject Your First Car Money?
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
+</body>
+</html>
+

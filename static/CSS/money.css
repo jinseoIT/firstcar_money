@@ -95,3 +95,25 @@
     width: 200px;
 
 }
+
+#total-drag {
+    display: flex;
+}
+
+#d1000, #d2000, #d3000, #d4000, #d5000, #d6000, #d7000, #d8000, #d9000:active {
+
+    width: 100px;
+    border: red solid;
+
+}
+
+#drag:active {
+
+
+    cursor: grabbing;
+    margin-left: 10px;
+}
+
+#drag {
+    border: solid black;
+}

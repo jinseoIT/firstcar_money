@@ -6,37 +6,38 @@
 </head>
 <body>
     <!-- header  -->
-  {% include '/common/header.html' %}
+    {% include '/common/header.html' %}
 
 
       <!-- 차량 정렬 -->
   <section class="car_order container">
     <div class="row">
         <div class="col-12 car_select_area">
-<!--          javascript:getOrder('price','asc'), orderToggle()-->
-          <a href="#" class="order_icon active" onclick="orderToggle(this)">
-            <i class="fas fa-sort-up"></i>
-          </a>
-          <a href="javascript:getOrder('price','desc'), orderToggle" class="order_icon">
-            <i class="fas fa-sort-down"></i>
-          </a>
-          <a href="javascript:void(0)" class="order_text active">가격순</a>
 
-          <a href="javascript:getOrder('fuel','asc')" class="order_icon on">
+          <a href="javascript:getOrder('regDt-asc')" id="regDt_asc" class="order_icon on active">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="javascript:getOrder('fuel','desc')" class="order_icon">
+          <a href="javascript:getOrder('regDt-desc')" id="regDt_desc" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
-          <a href="javascript:void(0)" class="order_text">연비순</a>
+          <a href="javascript:getToggle('regDt')" id="id_regDt" class="order_text active">출시순</a>
 
-          <a href="javascript:getOrder('regDt','asc')" class="order_icon on">
+          <a href="javascript:getOrder('price-asc')" id="price_asc" class="order_icon on">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="javascript:getOrder('regDt','desc')" class="order_icon">
+          <a href="javascript:getOrder('price-desc')" id="price_desc" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
-          <a href="javascript:void(0)" class="order_text">출시순</a>
+          <a href="javascript:getToggle('price')" id="id_price" class="order_text">가격순</a>
+
+          <a href="javascript:getOrder('fuel-asc')" id="fuel_asc" class="order_icon on">
+            <i class="fas fa-sort-up"></i>
+          </a>
+          <a href="javascript:getOrder('fuel-desc')" id="fuel_desc" class="order_icon">
+            <i class="fas fa-sort-down"></i>
+          </a>
+          <a href="javascript:getToggle('fuel')" id="id_fuel" class="order_text">연비순</a>
+
         </div>
     </div>
     <hr>
@@ -85,30 +86,34 @@
 
 
 <script>
-  let page = 1
+
+  /* init */
+  let g_page = 1
+  let g_order = 'regDt-desc'
 
   /* 더보기 */
   const moreList = () => {
-    page += 1
-    getCarList(page)
+    g_page += 1
+    getCarList(g_page, g_order)
   }
 
   /* 차량 리스트 호출 */
-  const getCarList = (page) => {
+  const getCarList = (page, order) => {
     let url = '/api/car-list'
-    url += '?page=' + page
+    url += '?page=' + page + '&' + 'order=' + order
     fetch(url, {
       method: 'GET',
       headers : { 'Content-Type': 'application/json'}
     })
     .then(res => res.json())
-    .then(data => addCarList(data.carList))
+    .then(data => addCarList(data.carList,'more'))
     .catch(error => console.log(error))
 
   }
 
   /* 차량 리스트 추가 */
-  const addCarList = (list) => {
+  const addCarList = (list, reqType) => {
+    let type =  reqType == 'more' ? 'more' : 'order';
     let str = '';
     console.log(list)
     for (let i=0; i<list.length;i+=1) {
@@ -129,33 +134,95 @@
         </dl>
         </div>`;
     }
-    document.querySelector('.car_card_area').insertAdjacentHTML('beforeend', str);
+
+    const cardArea = document.querySelector('.car_card_area');
+
+    if (type == 'more') {cardArea.insertAdjacentHTML('beforeend', str);}
+    else {cardArea.innerHTML = str; }
   }
 
-   const getOrder = (key, orderType) => {
-
-        console.log(key, orderType);
-       //apiGetOrder(key, orderType)
+  /* 차량 정렬 */
+   const getOrder = (type) => {
+        const orderArr = type.split('-');
+        /* 아이콘 focus 변경 */
+        changeIconFocus(orderArr)
+        /* 텍스트 focus 변경 */
+        changeTextFocus(orderArr)
+        /* 차량 정렬별 호출 */
+        getOrderCarList(type)
    }
 
-   const apiGetOrder = (type, orderType) => {
-       let url = '';
-       if (type == 'price'){
-           url = '/api/getCarOrder?orderType='+orderType
-       }
+   /* 정렬[아이콘] 적용 */
+  const changeIconFocus = (arr) => {
+        const sortType = arr[0];   /* 정렬 type */
+        const orderType = arr[1];  /* 정렬 asc or desc */
+
+        /* 초기화 */
+        const ordericons = document.getElementsByClassName(`order_icon`)
+
+        for (let i=0; i< ordericons.length; i++){
+            if(ordericons[i].classList.contains('on')){
+                ordericons[i].classList.remove('on')
+              }
+            if(ordericons[i].classList.contains('active')){
+                ordericons[i].classList.remove('active')
+              }
+            if( i % 2 == 0){ ordericons[i].classList.add('on') }
+        }
+        /* 정렬 아이콘 변경 */
+        let order = 'asc';
+        let deOrder = 'desc';
+
+        if(orderType == 'desc'){
+           order = 'desc';
+           deOrder= 'asc'
+        }
+
+        let _id  = sortType + '_' + order;
+        let _deId = sortType + '_' + deOrder;
+        document.getElementById(`${_id}`).classList.remove('on');
+        document.getElementById(`${_deId}`).classList.add('on');
+        document.getElementById(`${_id}`).classList.remove('active');
+        document.getElementById(`${_deId}`).classList.add('active');
+  }
+
+   /* 정렬[텍스트] 적용 */
+   const changeTextFocus = (arr) => {
+        const sortType = arr[0];   /* 정렬 type */
+
+        /* 초기화 */
+        const orderTexts = document.getElementsByClassName(`order_text`)
+
+        for (let i=0; i< orderTexts.length; i++){
+            if(orderTexts[i].classList.contains('active'))
+               orderTexts[i].classList.remove('active')
+        }
+        /* 정렬 텍스트 변경 */
+        let _id = "id_"+ sortType;
+        document.getElementById(`${_id}`).classList.add('active');
+   }
+
+   /* 정렬 텍스트 선택시 toggle */
+  const getToggle = (sortType) => {
+      let orderType = 'desc';
+      let ascYn = document.getElementById(`${sortType}_asc`).classList.contains('on')
+      orderType = ascYn ? 'asc' : 'desc';
+      getOrder(`${sortType}-${orderType}`);
+  }
+  /* 정렬별 차량 호출  */
+   const getOrderCarList = (type) => {
+       console.log('type :'+ type);
+       page = 1; // 페이지 초기화
+       g_order = type
+       let url = '/api/car-list?page=1&order='+type;
        fetch(url, {
         method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-        })
+        headers: { 'Content-Type': 'application/json'}})
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => addCarList(data.carList, 'order'))
         .catch(error => console.error('Error:', error));
    }
 
-   const orderToggle = e => {
-   }
 </script>
 
 </body>
