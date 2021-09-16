@@ -57,7 +57,7 @@ const listComment = function() {
         data: {},
         success: function (response) {
             // 유저정보 및 댓글 모든 정보들이 response 안에 담겨있음.
-            // console.log(response)
+            console.log(response)
             let comment_list = response.comment;
             for (let i=0; i<comment_list.length; i++){
                 let cmmt = comment_list[i];
@@ -96,7 +96,7 @@ const listComment = function() {
 const saveDb = function(){
     let comment = textarea.value;
     if (!comment){
-        textarea.innerText="입력하라고오"
+
         alert("글을 써주세요")
         return
     }else{
@@ -112,7 +112,7 @@ const saveDb = function(){
                     },
                     success: function (response) {
                         alert(response["msg"]);
-                        // console.log(response);
+                        console.log(response);
                         window.location.reload()
                     }
                 })
@@ -205,11 +205,6 @@ const carIdCheck = function(){
                         let car_price = car_info.car_price;
                         let car_price_full = car_info.car_price_full;
                         let car_type = car_info.car_type;
-
-                        // let parent_tag = document.querySelector(".p");
-                        // div_tag=document.createElement("div");
-                        // div_tag.setAttribute("class","col-12");
-
                         let parent_tag = document.querySelector(".car_detail");
                         let child_tag = document.createElement("div");
                         child_tag.setAttribute("class", "img_info");
@@ -220,7 +215,7 @@ const carIdCheck = function(){
                         <div class="col-12 col-lg-6">
                             <div class="img_button">
                                 <div class="car_img">
-                                    <img src=${car_img}
+                                    <img class="car_photo" src=${car_img}
                                          alt=${car_name}>
                                 </div>
                                 <button class="like">좋아요</button>
@@ -229,7 +224,7 @@ const carIdCheck = function(){
                         <div class="col-12 col-lg-6">
                             <div class="info">
                                 <div class="company_logo">
-                                    <button><img
+                                    <button><img class="logo_photo"
                                             src=${car_maker_img}
                                             alt=${car_name}></button>
                                 </div>
@@ -246,13 +241,14 @@ const carIdCheck = function(){
                             </div>
                         </div>
                     </div>
-                        `
+                    `
                     parent_tag.appendChild(child_tag)
                     }
                 })
 
 }
-
+let like = document.querySelector(".like");
+console.log(like)
 // 모달 닫는 함수.
 const closeModal = ()=>{
     modal.classList.add('modalOutside-hide')
@@ -264,11 +260,13 @@ const closeLoginModal = ()=>{
 
 
 // 텍스트 에어리어에 포커스를 클릭했을때! 토큰 기준으로 모달on/off 확인함
-const auth =()=>{
+const auth =(e)=>{
+    e.preventDefault()
     // 토큰이 없으면!
     if(!token){
         loginModal.classList.remove("modalOutside-hide");
         closeBtn.addEventListener("click",closeLoginModal);
+        // textarea.disabled= true;
     }else
         console.log("로그인 됬어!");
 }
