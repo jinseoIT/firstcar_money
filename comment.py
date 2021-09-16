@@ -15,7 +15,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 #  팀 프로젝트 공용 DB
 client = MongoClient(
-     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-moneㄴy.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
+     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                             '=majority')
 db = client.dbfirtcar.comments
 # client = MongoClient('localhost', 27017)
