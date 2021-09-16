@@ -21,10 +21,8 @@ app.register_blueprint(account.app_login)
 app.register_blueprint(moneyhope.app_money)
 app.register_blueprint(comment.api_comment)
 
-client = MongoClient(
-    'mongodb+srv://' + dbId + ':' + dbPw +
-    '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
-    '=majority')
+client = MongoClient('mongodb+srv://' + dbId + ':' + dbPw +'@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'''
+                                                           '=majority')
 db = client.dbfirtcar
 
 
@@ -44,12 +42,12 @@ def nickname_Chk():
     return render_template('index.html')
 
 
-@app.route('/user/login')
+@app.route('/login')
 def login_User():
     return render_template('login.html')
 
 
-@app.route('/user/register')
+@app.route('/register')
 def register_User():
     return render_template('register.html')
 
@@ -77,7 +75,7 @@ def getCarList():
     return jsonify({"success": False, "car_list": car_list})
 
 
-@app.route('/user/logout', methods=['GET'])
+@app.route('/logout', methods=['GET'])
 def logout():
     resp = make_response(render_template('main.html'))
     resp.delete_cookie('token')

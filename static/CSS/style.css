@@ -85,9 +85,13 @@
 }
 
 .footer__container {
-  height: 120px;
+  height: 150px;
   background: #2b292d;
   align-content: center;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 25px 0;
 }
 
 

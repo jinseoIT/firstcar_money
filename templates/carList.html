@@ -119,7 +119,9 @@
     for (let i=0; i<list.length;i+=1) {
       str += `<div class="car_card">
         <div class="card_img_area">
+           <a href="/car/detail/${carInfo._id}">
           <img src="${list[i].car_img}">
+           </a>
         </div>
         <strong>${list[i].car_name}</strong>
         <dl>

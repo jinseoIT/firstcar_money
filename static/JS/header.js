@@ -4,9 +4,9 @@ const join_member = document.querySelector("#join")
 if (document.cookie.includes("token")==false){
     const login_out = document.createElement("a")
     const join = document.createElement("a")
-        join.href="/user/register"
+        join.href="/register"
         join.innerText ="회원가입"
-        login_out.href="/user/login"
+        login_out.href="/login"
         login_out.innerText ="로그인"
 
     login_out_li.append(login_out)
@@ -17,7 +17,7 @@ else{
     const join = document.createElement("a")
         join.innerText = ""
         join.style.display = "none"
-        login_out.href="/user/logout"
+        login_out.href="/logout"
         login_out.innerText ="로그아웃"
 
     login_out_li.append(login_out)
