@@ -15,7 +15,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 #  팀 프로젝트 공용 DB
 client = MongoClient(
-     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-moneㄴy.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
+     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                             '=majority')
 db = client.dbfirtcar.comments
 # client = MongoClient('localhost', 27017)
@@ -60,7 +60,7 @@ def saving():
 
 
 
-########## 클라가 요청 보내면 데이터베이스에 있던 댓글들 다 보내주기 ##########
+########## 클라가 요청 보내면 데이터베이스에 있던 정보들 댓글들 다 보내주기 ##########
 @api_comment.route('/api/comment-list', methods=['GET'])
 def listing():
     # db에서 가져올때 최신순으로 가져오는 것을 한번 찾아보자.

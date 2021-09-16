@@ -1,6 +1,7 @@
 from flask import render_template, Blueprint, request, jsonify
 from pymongo import MongoClient
 import os
+import requests
 
 api_car = Blueprint('api_car', __name__, template_folder="templates")
 
@@ -35,6 +36,10 @@ def getCarList():
     return jsonify({"success": True, "carList": car_list})
 
 
-@api_car.route('/car/detail')
+@api_car.route('/car/detail/')
 def detail():
     return render_template('detail.html')
+
+
+
+
