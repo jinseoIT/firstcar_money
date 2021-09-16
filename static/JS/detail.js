@@ -205,12 +205,23 @@ const carIdCheck = function(){
                         let car_price = car_info.car_price;
                         let car_price_full = car_info.car_price_full;
                         let car_type = car_info.car_type;
-                        let parent_tag = document.querySelector(".img_button");
-                        div_tag=document.createElement("div");
-                        div_tag.setAttribute("class","car_img")
-                        div_tag.innerHTML=`
-                        <div class="car_img">
-                                    <img src=${car_img} alt=${car_name}>
+
+                        // let parent_tag = document.querySelector(".p");
+                        // div_tag=document.createElement("div");
+                        // div_tag.setAttribute("class","col-12");
+
+                        let parent_tag = document.querySelector(".car_detail");
+                        let child_tag = document.createElement("div");
+                        child_tag.setAttribute("class", "img_info");
+                        console.log(parent_tag,child_tag);
+                        child_tag.innerHTML=`
+                        <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="img_button">
+                                <div class="car_img">
+                                    <img src=${car_img}
+                                         alt=${car_name}>
                                 </div>
                                 <button class="like">좋아요</button>
                             </div>
@@ -220,22 +231,23 @@ const carIdCheck = function(){
                                 <div class="company_logo">
                                     <button><img
                                             src=${car_maker_img}
-                                            alt="${car_name}"></button>
+                                            alt=${car_name}></button>
                                 </div>
                                 <div class="description">
                                     <h1>${car_name}</h1>
                                     <strong>${car_age}형</strong>
                                     <ul>
-                                        <li><span>가격</span>${car_price_full}</li>
-                                        <li><span>연비</span>${car_fuel_efficiency}</li>
-                                        <li><span>연료</span>${car_fuel}</li>
-                                        <li><span>차타입</span>${car_type}</li>
+                                         <li><span>가격</span>${car_price_full}</li>
+                                         <li><span>연비</span>${car_fuel_efficiency}</li>
+                                         <li><span>연료</span>${car_fuel}</li>
+                                         <li><span>차타입</span>${car_type}</li>
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                         `
-                        console.log(parent_tag);
-                        parent_tag.appendChild(div_tag);
+                    parent_tag.appendChild(child_tag)
                     }
                 })
 
