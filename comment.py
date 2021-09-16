@@ -15,7 +15,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 #  팀 프로젝트 공용 DB
 client = MongoClient(
-     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
+     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-moneㄴy.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                             '=majority')
 db = client.dbfirtcar.comments
 # client = MongoClient('localhost', 27017)
@@ -34,22 +34,25 @@ db = client.dbfirtcar.comments
 # db.comment.delete_one({'name' : 'kyusikko'})
 
 
-####### 클라에서 보낸 데이터 받아서 db에 저########
+####### 클라에서 보낸 데이터 받아서 db에 저장 ########
 @api_comment.route('/api/comment-add', methods=['POST'])
-
 def saving():
+    userId_receive = request.form['userId_give']
     nickname_receive = request.form['nickname_give'];
     comment_receive = request.form['comment_give'];
-    nowDt = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+    nowDt = datetime.today().strftime("%Y-%m-%d %H:%M:%S");
+    token_receive = request.form['token_give'];
 
 
-
-    # 몽고 db에 들어갈 데이터 양식
+    # 몽고 db에 들어갈 데이터 doc 양식 (몽고 db는 카멜케이스로 작성 권유!)
     doc = {
+        "userId" : userId_receive,
         "nickname" : nickname_receive,
         "comment" : comment_receive,
         "reg_dt" : nowDt,
+        "token" : token_receive
     }
+    # print(doc)
 
     # 몽고 db에 저장!
     db.insert_one(doc)
@@ -94,7 +97,6 @@ def modifyCmmt():
 @api_comment.route('/api/comment-delete', methods=['POST'])
 def deleting():
     id_receive = request.form['id_give']
-    # print(id_receive)
     # 이거 어떻게 돌아가누
     result = db.delete_one({'_id': ObjectId(id_receive)})
     # test = db.comment.delete_one({'_id' : id_receive})

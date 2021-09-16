@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h1>이 차 어때?</h1>
+                        <h1>🚗 자동차 토크</h1>
                         <hr>
                         <div class="add_comment">
                             <textarea class="comment_area" placeholder="안녕하세요"></textarea>
@@ -72,8 +72,7 @@
                                 </div>
 
                                 <div class="comment">이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차
-                                    개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차 차 개별로임이 차 이 차 개별로임이 차 개이 차
-                                    개별로임이 차 차 개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차 차 개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차
+                                    개별로임이 차 이 차 개별로임이 차 개이임이 차 개이 차 개별로임이 차
                                 </div>
 
 
@@ -90,33 +89,43 @@
             </div>
         </article>
 
-        <div class="modal">
-              <div class="comment_group">
-                  <div class="id_time">
-                      <input type="hidden" id="modal_cmmt_id"/>
-                      <h3 id="modal_nickName">왜</h3>
-                        <span id="modal_reg_dt">218</span>
-                  </div>
-                  <textarea id="modal_content" style="width: 300px"></textarea>
-                  <div class="buttons-group">
-                      <button>취소</button>
-                      <button onclick="updateCmmt()">수정</button>
-                  </div>
-              </div>
-<!--            <textarea style="width: 300px">-->
-<!--            </textarea>-->
-<!--            <button type="button" class="confirmBtn">수정완료!</button>-->
-<!--            <button type="button">취소하기</button>-->
+        {#  수정 페이지 모달창   #}
+        <div class="modalOutside modalOutside-hide">
+            <div class="modal">
+                <div class="comment_group">
+                    <div class="id_time">
+                        <input type="hidden" id="modal_cmmt_id"/>
+                        <h3 id="modal_nickName">닉네임</h3>
+                        <span id="modal_reg_dt">2021-02-22</span>
+                    </div>
+                    <textarea id="modal_content" class="modifiRandom"></textarea>
+                    <div class="modal-buttons-group">
+                        <button onclick="updateCmmt()" class="confirmBtn">수정</button>
+                        <button class="cancelBtn">취소</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- footer  -->
-        {% include '/common/footer.html' %}
+        {#  로그인 회원가입 권유 모달창   #}
+        <div class="loginModal modalOutside-hide">
+            <div class="modal">
+                <div class="comment_group">
+                    <h1 id="modal_nickName">😡로그인 하시라고요.</h1>
+                    <div class="modal-buttons-group">
+                        <button class="confirmBtn" onclick="location.href='http://127.0.0.1:5000/user/login'">로그인 하러가기</button>
+                        <button class="cancelBtn register" onclick="location.href='http://127.0.0.1:5000/user/register'">회원가입 하러가기</button>
+                    </div>
+                </div>
+                <button class="닫기"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
 
-        <script src="../static/JS/detail.js"></script>
 
-        <script>
+            <!-- footer  -->
+            {% include '/common/footer.html' %}
 
-        </script>
+            <script src="../static/JS/detail.js"></script>
     </body>
 </html>
 
