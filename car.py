@@ -20,18 +20,34 @@ def home():
     page = int(request.args.get('page', 1))
     limit = 16
     offset = (page - 1) * limit
-    car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
+    # default 출시순 desc
+    car_list = list(db.carInfo.find({}, {'_id': False}).sort('car_age', -1).limit(limit).skip(offset))
     return render_template('carList.html', carList=car_list)
 
 # 차량 리스트 호출 API
 @api_car.route('/api/car-list', methods=['GET'])
 def getCarList():
     page = int(request.args.get('page'))
-    print('request :', request)
-    print('page:', page)
+    orderType = request.args.get('order')
+    print(orderType)
     limit = 16
     offset = (page - 1) * limit
-    car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
+    car_list = []
+    if(orderType == None):
+        car_list = list(db.carInfo.find({}, {'_id': False}).sort('car_age', -1).limit(limit).skip(offset))
+    else:
+        arr = orderType.split('-')
+        sortNm = 'car_age'
+        sortType = 1 if arr[1] == 'asc' else -1
+        ignore = {}
+        if arr[0]=='price':
+            sortNm = 'car_price'
+            ignore = {'car_price': {'$ne': 0}}
+        elif arr[0] == 'fuel':
+            sortNm = 'car_fuel_basic'
+            ignore = {'car_fuel_basic': {'$ne': 0}}
+        print(page, sortNm, sortType)
+        car_list = list(db.carInfo.find(ignore, {'_id': False}).sort(sortNm, sortType).limit(limit).skip(offset))
 
     return jsonify({"success": True, "carList": car_list})
 

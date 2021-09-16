@@ -1,73 +1,70 @@
-#regist_Frame {
-    display: block;
-    border: 2px solid darkgray;
-    border-radius: 5px;
-    width: 300px;
-    padding-bottom: 80px;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin: 10% auto 50px auto;
-
+.signin {
+    padding: 100px 0 150px;
+    background-image: url("/static/Img/spotcar.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
-
-#Home {
-
-    margin-top: 10px;
-    font-weight: bolder;
+.signin h1 {
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
     text-align: center;
-    font-size: 25px;
+    margin-bottom: 24px;
 }
-
-#GoHome {
-    text-decoration-line: none;
-    color: inherit;
+.signin__card {
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 6px;
+    background-color: #f1f3f5;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0 .3);
 }
-
-#buttons {
-    display: block;
-    margin-left: 50px;
-    margin-top: 30px;
+.signin__card h2 {
+    padding: 30px;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
-
-#Regist_button {
-    font-size: 5px;
-    padding: 10px 20px 10px 20px;
-    border-radius: 20px;
+.signin__card h2 strong {
+    font-weight: 700;
+    color: #0066ff;
+}
+.signin__card form {
+    padding: 12px 22px;
+}
+.signin__card form div {
+    font-weight: bold;
+}
+.signin__card form input {
+    width: 100%;
+    margin: 8px auto 8px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.signin__card form .login__join {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.signin__card form [type="submit"] {
+    width: 160px;
+    background-color: #0066ff;
     border: none;
-    color: white;
-    background-color: limegreen;
-    margin-left: 60px;
-
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
 }
-
-#Login_button {
-    font-size: 5px;
-    padding: 10px 20px 10px 20px;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    background-color: blue;
+.signin__card form #Regist_button {
+    background-color: #13CE66;
 }
-
-
-#ID_Input, #passWord_Input {
-    padding-top: 5px;
-    margin-top: 3%;
-    margin-left: 5%;
-    width: 250px;
-    outline-color: darkgray;
-}
-
-#ID {
-
-    margin-top: 20%;
-    font-weight: bolder;
-
-    margin-left: 5%;
-}
-
-#passWord {
-    margin-top: 10%;
-    font-weight: bolder;
-    margin-left: 5%;
+.signin__card form p {
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
 }

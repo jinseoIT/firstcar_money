@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>로그인</title>
-        <link rel="stylesheet" href="../static/CSS/login.css">
-    </head>
-    <body>
-        <div id="regist_Frame">
-            <form id="register_Form">
-                <div id="Home">
-                    <a id="GoHome" href="/"> 첫차money?</a>
-                </div>
-                <div id="ID">
-                    아이디
-                </div>
-
-                <input type="email" id="ID_Input">
-
-
-                <div id="passWord">
-                    패스워드
-                </div>
-
-                <input type="password" id="passWord_Input">
-
-
-                <div id="buttons">
-                    <button id="Login_button">로그인</button>
-                    <button id="Regist_button">회원가입</button>
-                </div>
-            </form>
+<head>
+    {% include '/common/head.html' %}
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../static/CSS/login.css">
+</head>
+<body>
+{% include '/common/header.html' %}
+<section class="signin">
+    <h1>회원가입</h1>
+    <div class="signin__card">
+      <h2>
+        <strong><a href="/">첫 차 Money?</a></strong>
+      </h2>
+      <form id="register_Form">
+        <span>아이디</span>
+        <input id="ID_Input" type="email" placeholder="아이디를 입력하세요.">
+        <span>비밀번호</span>
+        <input id="passWord_Input" type="password" placeholder="비밀번호를 입력하세요.">
+        <div class="login__join">
+            <input id="Login_button" type="submit" value="확인">
+            <input id="Regist_button" type="submit" value="회원가입">
         </div>
-        <script src="../static/JS/login.js"></script>
-
-    </body>
+      </form>
+  </div>
+  </section>
+</div>
+<script src="../static/JS/login.js"></script>
+{% include '/common/footer.html' %}
+</body>
 </html>

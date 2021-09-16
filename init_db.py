@@ -98,7 +98,7 @@ def insert_carInfo(url, pageNum):
         car_price_full = tr.select_one('.lst > .price ').text.replace("출시","").strip()
         # 차량 가격 - basic
         car_price = tr.select_one('.lst > .price ').text
-        car_price = carPriceExp(car_price)
+        car_price = int(carPriceExp(car_price))
 
         doc = {
             'car_name': car_name,
@@ -207,12 +207,6 @@ def insert_cars():
         insert_carInfo(newModelUrl, i)
 
 
-def test1():
-    print('===test=====')
-    test = list(db.books.find_one({}, {'_id': False}))
-    print(test)
-
 ## 실행하기
-#insert_cars()
+insert_cars()
 #get_urls()
-test1()
