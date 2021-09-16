@@ -13,29 +13,29 @@
   <section class="car_order container">
     <div class="row">
         <div class="col-12 car_select_area">
-          <a href="#" class="order_icon active">
+          <a href="javascript:getOrder('price_asc')" class="order_icon active">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="#" class="order_icon">
+          <a href="javascript:getOrder('price_desc')" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
-          <a href="#" class="order_text active">가격순</a>
+          <a href="javascript:void(0)" class="order_text active">가격순</a>
 
-          <a href="#" class="order_icon on">
+          <a href="javascript:getOrder('fuel_asc')" class="order_icon on">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="#" class="order_icon">
+          <a href="javascript:getOrder('fuel_desc')" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
-          <a href="#" class="order_text">연비순</a>
+          <a href="javascript:void(0)" class="order_text">연비순</a>
 
-          <a href="#" class="order_icon on">
+          <a href="javascript:getOrder('regDt_asc')" class="order_icon on">
             <i class="fas fa-sort-up"></i>
           </a>
-          <a href="#" class="order_icon">
+          <a href="javascript:getOrder('regDt_desc')" class="order_icon">
             <i class="fas fa-sort-down"></i>
           </a>
-          <a href="#" class="order_text">출시순</a>
+          <a href="javascript:void(0)" class="order_text">출시순</a>
         </div>
     </div>
     <hr>
@@ -84,37 +84,58 @@
 
 
 <script>
+    const orderList = document.getElementsByClassName('order_icon')
+    console.log(orderList)
+    /* init */
   let page = 1
-  window.onload = () => {
-    init();
-  }
 
-  const init = () => {
-
-  }
-
+  /* 더보기 */
   const moreList = () => {
     page += 1
     getCarList(page)
   }
+
+  /* 차량 리스트 호출 */
   const getCarList = (page) => {
     let url = '/api/car-list'
     url += '?page=' + page
     fetch(url, {
       method: 'GET',
-      headers : {
-        'Content-Type': 'application/json'
-      }
+      headers : { 'Content-Type': 'application/json'}
     })
-    .then((res) => console.log(res))
-    .catch((error) => console.log(error))
-
+    .then(res => res.json())
+    .then(data => addCarList(data.carList))
+    .catch(error => console.log(error))
 
   }
 
+  /* 차량 리스트 추가 */
+  const addCarList = (list) => {
+    let str = '';
+    console.log(list)
+    for (let i=0; i<list.length;i+=1) {
+      str += `<div class="car_card">
+        <div class="card_img_area">
+          <img src="${list[i].car_img}">
+        </div>
+        <strong>${list[i].car_name}</strong>
+        <dl>
+          <dt>가격</dt>
+          <dd class="price">${list[i].car_price_full}</dd>
+          <dt>연식</dt>
+          <dd>${list[i].car_age}</dd>
+          <dt>연비</dt>
+          <dd>${list[i].car_fuel_efficiency}</dd>
+          <dt>연료</dt>
+          <dd>${list[i].car_fuel}</dd>
+        </dl>
+        </div>`;
+    }
+    document.querySelector('.car_card_area').insertAdjacentHTML('beforeend', str);
+  }
 
-   const orderFtn = (key, orderType) => {
-       apiGetOrder(key, orderType)
+   const getOrder = (orderType) => {
+        console.log(orderType);
    }
 
    const apiGetOrder = (type, orderType) => {
@@ -133,7 +154,8 @@
         .catch(error => console.error('Error:', error));
    }
 
-
+   const orderToggle = e => {
+   }
 </script>
 
 </body>

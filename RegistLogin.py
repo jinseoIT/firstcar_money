@@ -49,8 +49,11 @@ def check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access):
 def check_Login(user_Email,user_PassWord):
 
     user = db.Users.find_one({"user_Email": user_Email})
-
+    print(user)
     user_Nick = user["user_Nick"]
+    print(user_Nick)
+    user_Nick = user["user_Nick"]
+
 
     # 아이디 혹은 비밀번호가 틀릴때
     if user == None:
@@ -72,7 +75,9 @@ def check_Login(user_Email,user_PassWord):
             }
             Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)
 
-
+            print(Token)
+            print('-------------------')
+            print(jwt.decode(Token,jwtKey,algorithms=["HS256"]))
 
             userInfo = { 'userId': user_id, 'userName' : user['user_Nick']}
 

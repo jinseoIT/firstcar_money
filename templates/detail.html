@@ -52,27 +52,71 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
+                        <h1>이 차 어때?</h1>
+                        <hr>
+                        <div class="add_comment">
+                            <textarea class="comment_area" placeholder="안녕하세요"></textarea>
+                            <div class="buttons-group">
+                                <button type="submit" class="submitBtn">제출</button>
+                                <button type="button">취소</button>
+                            </div>
+                        </div>
                         <ul class="comment_list">
+
+                            <!--  댓글 리스트  -->
                             <li class="comment_group">
+
                                 <div class="id_time">
-                                    <h2>kokyusik91</h2>
+                                    <h3>kokyusik91</h3>
                                     <span>2021-10</span>
                                 </div>
-                                <div class="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-                                    amet aperiam aspernatur beatae commodi, cupiditate doloremque enim error eum itaque
-                                    laboriosam minus modi similique sit soluta ullam unde? Animi, dolores.
+
+                                <div class="comment">이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차
+                                    개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차 차 개별로임이 차 이 차 개별로임이 차 개이 차
+                                    개별로임이 차 차 개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차 차 개별로임이 차 이 차 개별로임이 차 개이 차 개별로임이 차
                                 </div>
+
+
                                 <div class="buttons-group">
-                                    <button>수정</button>
-                                    <button>삭제</button>
+                                    <button class="modified"><i class="far fa-edit"></i></button>
+                                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
                                 </div>
+
                             </li>
+
                         </ul>
                     </div>
                 </div>
             </div>
         </article>
+
+        <div class="modal">
+              <div class="comment_group">
+                  <div class="id_time">
+                      <input type="hidden" id="modal_cmmt_id"/>
+                      <h3 id="modal_nickName">왜</h3>
+                        <span id="modal_reg_dt">218</span>
+                  </div>
+                  <textarea id="modal_content" style="width: 300px"></textarea>
+                  <div class="buttons-group">
+                      <button>취소</button>
+                      <button onclick="updateCmmt()">수정</button>
+                  </div>
+              </div>
+<!--            <textarea style="width: 300px">-->
+<!--            </textarea>-->
+<!--            <button type="button" class="confirmBtn">수정완료!</button>-->
+<!--            <button type="button">취소하기</button>-->
+        </div>
+
+        <!-- footer  -->
+        {% include '/common/footer.html' %}
+
         <script src="../static/JS/detail.js"></script>
+
+        <script>
+
+        </script>
     </body>
 </html>
 

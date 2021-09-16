@@ -73,14 +73,85 @@ section .img_info{
 /* Comment */
 
 
-article .comment_group{
+/* Comment */
+
+article .add_comment{
     display : flex;
-    justify-content: space-between;
+    align-items: center;
+    /* justify-content: space-around; */
 }
 
-.comment_list{
-    background-color : #f0f4f5;
+article .add_comment .comment_area{
+    border: none;
+    resize: none;
+    border : 1px solid black;
+    width : 1000px;
 }
+
+
+article .comment_group {
+    display: flex;
+    padding: 20px 10px;
+    margin-bottom: 12px;
+    border: 1px solid black;
+    background-color: #fff;
+    /* justify-content: space-between; */
+    align-items: center;
+    position : relative;
+    border-radius: 5px;
+}
+
+article .comment_group h3 {
+    font-size : 15px;
+}
+
+article .comment_group span {
+    font-size : 12px;
+}
+
+.id_time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-right : 20px;
+    flex-basis : 15%;
+
+}
+
+.id_time h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.comment_group .comment{
+    flex : none;
+    flex-basis : 70%;
+
+}
+
+.comment_group .buttons-group{
+    flex-basis : 15%;
+    text-align: right;
+
+
+}
+.modified{
+    background-color: #F9FAFA;
+    padding : 6px 10px;
+    color : black;
+    border-radius : 5px;
+    border : 0.5px solid #DBDEDF;
+}
+
+.delete{
+    background-color: #F9FAFA;
+    padding : 6px 10px;
+    color : black;
+    border-radius : 5px;
+    border : 0.5px solid #DBDEDF;
+}
+
 
 /* Custom Grid System - Fix container width*/
 @media screen and(min-width: 1200px) {
@@ -118,4 +189,15 @@ article .comment_group{
     .like{
         margin-bottom : 20px;
     }
+
+    article .comment_group {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+}
+
+.modal  {
+    width: 500px;
+    margin: 0 auto;
 }

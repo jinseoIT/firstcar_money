@@ -14,6 +14,8 @@ client = MongoClient('mongodb+srv://'+dbId+':'+dbPw+'@firstcar-money.ojfbk.mongo
 db = client.dbfirtcar
 
 
+
+
 # DB에 저장할 차량 url을 가져옵니다.
 def get_urls():
     headers = {
@@ -205,7 +207,12 @@ def insert_cars():
         insert_carInfo(newModelUrl, i)
 
 
+def test1():
+    print('===test=====')
+    test = list(db.books.find_one({}, {'_id': False}))
+    print(test)
 
 ## 실행하기
-insert_cars()
+#insert_cars()
 #get_urls()
+test1()

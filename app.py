@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify, make_response, redir
 
 import os
 from dotenv import load_dotenv
-
+import comment
 import RegistLogin
 import account
 import car
@@ -19,10 +19,12 @@ app.register_blueprint(car.api_car)
 app.register_blueprint(account.app_account)
 app.register_blueprint(account.app_login)
 app.register_blueprint(moneyhope.app_money)
+app.register_blueprint(comment.api_comment)
 
 client = MongoClient(
-    'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
-                                           '=majority')
+    'mongodb+srv://' + dbId + ':' + dbPw +
+    '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
+    '=majority')
 db = client.dbfirtcar
 
 
@@ -60,7 +62,8 @@ def register_Process_User():
     user_Nick = user_Datas["Nick"]
     user_PassWord = user_Datas["PassWord"]
     PassWord_Access = user_Datas["PassWord_Access"]
-    res = RegistLogin.check_Regist(user_Email, user_Nick, user_PassWord, PassWord_Access)
+    res = RegistLogin.check_Regist(
+        user_Email, user_Nick, user_PassWord, PassWord_Access)
     return res
 
 
@@ -69,10 +72,9 @@ def getCarList():
     page = int(request.args.get('page', 1))
     limit = 10
     offset = (page - 1) * limit
-    car_list = list(db.carInfo.find({}, {'_id': False}).limit(limit).skip(offset))
-    print('왜안되나영')
+    car_list = list(db.carInfo.find(
+        {}, {'_id': False}).limit(limit).skip(offset))
     return jsonify({"success": False, "car_list": car_list})
-
 
 
 @app.route('/user/logout', methods=['GET'])
@@ -80,11 +82,6 @@ def logout():
     resp = make_response(render_template('main.html'))
     resp.delete_cookie('token')
     return resp
-
-
-@app.route('/detail')
-def detail():
-    return render_template('detail.html')
 
 
 if __name__ == '__main__':
