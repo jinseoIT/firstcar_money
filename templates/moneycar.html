@@ -52,13 +52,16 @@
 </form>
 
 
-<div id="Total">
+<div id="main_div">
+
 
 </div>
-<div id="Last-Total1"></div>
-<div id="Last-Total2"></div>
-<div id="Last-Total3"></div>
-<div id="Last-Total4"></div>
+
+
+<div id="sub_div">
+
+
+</div>
 
 
 <br/>
@@ -79,14 +82,14 @@
 <script>
     const moneyForm = document.querySelector("#moneyForm")
     const subdesc2 = document.querySelector("#list")
-    const main = document.querySelector("#Total")
+    const main_div = document.querySelector("#main_div")
+    const sub_div = document.querySelector("#sub_div")
 
     function preventSubmit(e) {
         e.preventDefault()
         fetch(`/car/from-range?min-money=${your_min_Money.value}`).then(res => res.json()).then(data => {
             const listlive = document.querySelector(`#list`)
             if (listlive == null) {
-
                 writingdiv(data)
             } else {
                 deletediv()
@@ -94,30 +97,34 @@
             }
         })
     }
+
     function deletediv() {
-        for(let i=1; i<5; i++){
-            document.querySelector(`#Last-Total${i}`).innerHTML = ""
-        }
-        main.innerHTML = ""
+
+        main_div.innerHTML = ""
+        sub_div.innerHTML = ""
     }
 
     function writingdiv(data) {
         for (let i = 0; i < data.carlist.length; i++) {
             if (i == 0) {
-                const total = template(i, data, "Image","realImage","Desc","main-desc1")
-                main.insertAdjacentHTML('beforeend', total);
-
+                parent_div = document.createElement("div")
+                parent_div.id = "Total"
+                const total = template(i, data, "Image", "realImage", "Desc", "main-desc1")
+                parent_div.insertAdjacentHTML('beforeend', total);
+                main_div.append(parent_div)
             } else {
-                 const newdiv = document.querySelector(`#Last-Total${i}`)
-                 const sublist = template(i,data,"Last-Image","Last-realImage","Last-Desc","list")
-                newdiv.insertAdjacentHTML('beforeend', sublist);
-
+                parent_sub_div = document.createElement("div")
+                parent_sub_div.id = `Last-Total${i}`
+                const sublist = template(i, data, "Last-Image", "Last-realImage", "Last-Desc", "list")
+                parent_sub_div.insertAdjacentHTML('beforeend', sublist);
+                sub_div.append(parent_sub_div)
             }
         }
     }
 
-    function template(i, data, LastImage,LastrealImage,LastDesc,list) {
-       return ` <div id=${LastImage}>
+
+    function template(i, data, LastImage, LastrealImage, LastDesc, list) {
+        return ` <div id=${LastImage}>
                               <img id=${LastrealImage} src=${data.carlist[i].car_img}>
                                                    </div>
                                             <div id=${LastDesc}>
@@ -129,15 +136,10 @@
                                       차 크기 : ${data.carlist[i].car_type}
                                                     <br/>
                              차 연비 : ${data.carlist[i].car_fuel_efficiency}
-
                                                     <br/>
-
                                                       </h5>
                                                 </div>`
     }
-
-
-
 
 
     moneyForm.addEventListener("submit", preventSubmit)
