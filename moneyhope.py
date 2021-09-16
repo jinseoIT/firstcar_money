@@ -18,7 +18,7 @@ db = client.dbfirtcar
 app_money = Blueprint('api_money', __name__, template_folder="templates")
 
 
-@app_money.route('/api/car/from-range')
+@app_money.route('/car/from-range')
 def your_money():
     user_min_money = request.args.get("min-money")
     if user_min_money:

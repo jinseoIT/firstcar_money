@@ -20,7 +20,11 @@ def home():
     limit = 16
     offset = (page - 1) * limit
     # default 출시순 desc
-    car_list = list(db.carInfo.find({}, {'_id': False}).sort('car_age', -1).limit(limit).skip(offset))
+    car_list = list(db.carInfo.find({}).sort('car_age', -1).limit(limit).skip(offset))
+    for _list in car_list:
+        _list["_id"] = str(_list["_id"])
+
+    print(car_list);
     return render_template('carList.html', carList=car_list)
 
 # 차량 리스트 호출 API
@@ -53,4 +57,5 @@ def getCarList():
 
 @api_car.route('/car/detail')
 def detail():
+
     return render_template('detail.html')
