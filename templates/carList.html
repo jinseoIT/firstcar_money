@@ -52,7 +52,7 @@
           {% for carInfo in carList %}
             <div class="car_card">
               <div class="card_img_area">
-                <img src="{{ carInfo.car_img }}">
+                  <a href="/car/detail/{{ carInfo._id }}"><img src="{{ carInfo.car_img }}"></a>
               </div>
               <strong>{{ carInfo.car_name }}</strong>
               <dl>

@@ -2,12 +2,13 @@
 <html lang="en">
     <head>
         {% include '/common/head.html' %}
-        <link rel="stylesheet" href="../static/CSS/detail.css">
+        <link rel="stylesheet" href="/static/CSS/detail.css">
     </head>
     <body>
         <!-- header  -->
         {% include '/common/header.html' %}
-        <h3>{{ carId }}</h3>
+
+        <input type="hidden" id="carid_info" value="{{ car_id }}">
         {#     body       #}
         <section class="car_detail">
             <div class="img_info">
@@ -15,31 +16,7 @@
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="img_button">
-                                <div class="car_img">
-                                    <img src="https://img1.daumcdn.net/thumb/R380x0/?fname=%2Fmedia%2Fvitraya%2Fauto%2Fimage%2F5cd55c%2F82EF11602099EA14C34589A7899759089E3C27ECD6C803330F_4EVM"
-                                         alt="">
-                                </div>
-                                <button class="like">좋아요</button>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="info">
-                                <div class="company_logo">
-                                    <button><img
-                                            src="https://img1.daumcdn.net/thumb/P36x36/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmedia%2Fimg-section%2Fauto2017%2Fcompany%2Fbd40001500p2.png"
-                                            alt=""></button>
-                                </div>
-                                <div class="description">
-                                    <h1>볼보 XC60 플러그인 하이브리드 F/L (2세대)</h1>
-                                    <strong>2022년형</strong>
-                                    <ul>
-                                        <li><span>가격</span>8370만원</li>
-                                        <li><span>연비</span>10.8km/l</li>
-                                        <li><span>연료</span>하이브리드</li>
-                                        <li><span>배기량</span>1969cc</li>
-                                        <li><span>정원</span>5</li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -113,8 +90,11 @@
                 <div class="comment_group">
                     <h1 id="modal_nickName">😡로그인 하시라고요.</h1>
                     <div class="modal-buttons-group">
-                        <button class="confirmBtn" onclick="location.href='http://127.0.0.1:5000/user/login'">로그인 하러가기</button>
-                        <button class="cancelBtn register" onclick="location.href='http://127.0.0.1:5000/user/register'">회원가입 하러가기</button>
+                        <button class="confirmBtn" onclick="location.href='http://127.0.0.1:5000/user/login'">로그인 하러가기
+                        </button>
+                        <button class="cancelBtn register"
+                                onclick="location.href='http://127.0.0.1:5000/user/register'">회원가입 하러가기
+                        </button>
                     </div>
                 </div>
                 <button class="닫기"><i class="fas fa-times"></i></button>
@@ -122,11 +102,36 @@
         </div>
 
 
-            <!-- footer  -->
-            {% include '/common/footer.html' %}
+        <!-- footer  -->
+        {% include '/common/footer.html' %}
 
-            <script src="../static/JS/detail.js"></script>
+        <script src="/static/JS/detail.js"></script>
     </body>
 </html>
 
 
+{#<div class="car_img">#}
+{#    <img src="https://img1.daumcdn.net/thumb/R380x0/?fname=%2Fmedia%2Fvitraya%2Fauto%2Fimage%2F5cd55c%2F82EF11602099EA14C34589A7899759089E3C27ECD6C803330F_4EVM"#}
+{#         alt="">#}
+{#</div>#}
+{#<button class="like">좋아요</button>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-12 col-lg-6">#}
+{#    <div class="info">#}
+{#        <div class="company_logo">#}
+{#            <button><img#}
+{#                    src="https://img1.daumcdn.net/thumb/P36x36/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmedia%2Fimg-section%2Fauto2017%2Fcompany%2Fbd40001500p2.png"#}
+{#                    alt=""></button>#}
+{#        </div>#}
+{#        <div class="description">#}
+{#            <h1>볼보 XC60 플러그인 하이브리드 F/L (2세대)</h1>#}
+{#            <strong>2022년형</strong>#}
+{#            <ul>#}
+{#                <li><span>가격</span>8370만원</li>#}
+{#                <li><span>연비</span>10.8km/l</li>#}
+{#                <li><span>연료</span>하이브리드</li>#}
+{#                <li><span>배기량</span>1969cc</li>#}
+{#                <li><span>정원</span>5</li>#}
+{#            </ul>#}
+{#        </div>#}
