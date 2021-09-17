@@ -35,8 +35,12 @@ const car_id_value = document.querySelector("#carid_info").value;
 // 현재 로컬 스토리지에 있는 userInfo에 접근하여 json 형태로 역 직렬화.
 // 로그인 한 유저의 아이디 및 닉네임을 변수에 저장.
 const userInfo = JSON.parse(localStorage.getItem("userInfo"))
-const userID = userInfo.userId;
-const userName = userInfo.userName;
+let userID = '';
+let userName ='';
+if(userInfo){
+    userID = userInfo.userId;
+    userName = userInfo.userName;
+}
 
 
 // 쿠키 접근

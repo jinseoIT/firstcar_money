@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="../static/CSS/register.css">
 </head>
 <body>
-{% include '/common/header.html' %}
+
 <section class="signin">
-    <h1>회원가입</h1>
-    <div class="signin__card">
-      <h2>
-        <strong><a href="/">첫 차 Money?</a></strong>
-      </h2>
+        <div class="logogo">
+            <a class= "main_logo" href=""><img src="/static/img/mainlogo2.png" alt="로"></a>
+        </div>
+    <div class="register__card">
+        <h1>회원가입</h1>
       <form id="register_Form">
         <span>아이디</span>
         <input id="ID_Input" type="text" placeholder="아이디를 입력하세요.">
@@ -32,6 +32,6 @@
   </section>
 </div>
 <script src="../static/JS/register.js"></script>
-{% include '/common/footer.html' %}
+
 </body>
 </html>
