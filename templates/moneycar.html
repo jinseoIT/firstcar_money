@@ -32,18 +32,15 @@
       <dis class="row">
         <div class="col-12 title_car__area">
         <!--대표 차량 이미지 영역-->
+
             <div class="img__area">
               <span id="mainCar_name" class="car_name">{{carInfo.car_name}}</span>
-              <img
-                  src="{{carInfo.car_img}}"
-                  id ="mainCar_img"
-              >
-              <div class="logo">
-                <imgn
-                  src="{{carInfo.car_maker_img}}"
-                  id="mainCar_logo"
-                >
-              </div>
+                <a href="/car/detail/{{ carInfo._id }}">
+                    <img src="{{carInfo.car_img}}"  id ="mainCar_img">
+                    <div class="logo">
+                        <img src="{{carInfo.car_maker_img}}"  id="mainCar_logo">
+                    </div>
+                </a>
             </div>
         <!--대표차량 정보 영역-->
             <div class="car_info__area">
