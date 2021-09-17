@@ -89,11 +89,14 @@ const listComment = function() {
                 li_tag.innerHTML = list_html;
                 ul_tag.appendChild(li_tag);
                 }else{
-                    let list_html = `<div class="id_time">
+                    let list_html = `
+                                   <div class="comment_info">
+                                    <div class="timeAndId">
                                     <h3>${comment_nickname}</h3>
                                     <span>${comment_currentTime}</span>
                                 </div>
                                 <div class="comment">${comment}</div>
+                                </div>
                                 `
                 li_tag.innerHTML = list_html;
                 ul_tag.appendChild(li_tag);
