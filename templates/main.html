@@ -5,15 +5,17 @@
     <link rel="stylesheet" href="/static/CSS/video.css">
     <script src="/static/JS/youtube.js" defer></script>
     <link rel="stylesheet" href="../static/CSS/main.css">
+
 </head>
         <body>
+
         <!-- header  -->
         {% include '/common/header.html' %}
         <!-- youtube -->
         <section class="youtube container-fluid">
             <div class="youtube__area row">
                 <div id="player" class="video col-12"></div>
-            </div>
+             </div>
         </section>
         <!-- 차량 링크 -->
         <section class="container">
@@ -51,6 +53,10 @@
                 </div>
             </div>
         </section>
+        <div id="to-top">
+            <div class="material-icons"></div>
+        </div>
     {% include '/common/footer.html' %}
-    </body>
+
+        </body>
 </html>

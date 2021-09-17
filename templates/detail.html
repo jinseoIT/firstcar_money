@@ -42,7 +42,7 @@
                                          <li><span>연료</span>{{carInfo.car_fuel}}</li>
                                          <li><span>차타입</span>{{carInfo.car_type}}</li>
                                     </ul>
-                                    <button class="like">추천</button>
+                                    <button class="like" onclick="addLike('{{ carId }}')">추천</button>
                                 </div>
                             </div>
                         </div>
@@ -109,6 +109,26 @@
         {% include '/common/footer.html' %}
 
         <script src="/static/JS/detail.js"></script>
+        <script>
+            /* carId 기준 좋아요 추가 */
+            const addLike = (carId) => {
+                console.log('버튼누름', carId)
+                const token = getCookieValue("token")
+                if(token){ authChk() }
+                else{auth()}
+
+            }
+
+            const authChk = () => {
+                const url = '/api/auth/check'
+                fetch(url, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json'}})
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+                }
+        </script>
     </body>
 </html>
 

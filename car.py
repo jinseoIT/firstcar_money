@@ -1,3 +1,4 @@
+import jwt
 from flask import render_template, Blueprint, request, jsonify
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -71,8 +72,33 @@ def detail(keyword):
     carInfo["_id"] = str(carInfo["_id"])
     return render_template('detail.html', carInfo= carInfo , carId= carId)
 
+@api_car.route('/api/car/add-like')
+def addLike():
+    carId = request.args.get('carId')
 
-# 바로 jinja2로 뿌려 주기 떄문에 필요없는 API
+    payload = { "success" : True }
+    return jsonify(payload)
+
+
+@api_car.route('/api/auth/check')
+def authChk():
+    token_receive = request.cookies.get('mytoken');
+    isLogin = False
+
+    jwtAlgorithm = os.getenv('JWT_ALGORITHM')
+    jwtKey = os.getenv('JWT_KEY')
+
+    try:
+        payload = jwt.decode(token_receive, jwtKey, algorithms=[jwtAlgorithm])
+        #user_info = db.users.find_one({"username": payload["id"]})
+        return jsonify( {"sucessYn" : True, "isLogin": True} )
+    except jwt.ExpiredSignatureError:
+         return jsonify({"successYn" : False, "msg":'로그인 시간이 만료되었습니다.', "isLogin" : isLogin})
+    except jwt.exceptions.DecodeError:
+        msg = "로그인 정보가 존재하지 않습니다."
+    return jsonify({"successYn" : False, "msg":'로그인 정보가 존재하지 않습니다', "isLogin" : isLogin })
+
+#바로 jinja2로 뿌려 주기 떄문에 필요없는 API
 # @api_car.route('/api/carInfo-check', methods=['POST'])
 # def checking():
 #     carId_receive = request.form['carId_give']
