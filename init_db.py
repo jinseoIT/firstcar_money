@@ -219,7 +219,7 @@ def insert_cars():
 
 def insert_test():
     doc = {
-        'car_name': "2021 벤츠 E클래스 쿠페",
+        'car_name': "렉서스 LS",
         'car_age': 2021,
         'car_img': "https://imgauto-phinf.pstatic.net/20201201_214/auto_1606794934587jrJkp_PNG/20201201125521_f6qCMA8X.png?type=f160_116",
         'car_maker_img': "https://imgauto-phinf.pstatic.net/20170707_151/auto_1499404806991Xuw2o_PNG/20170707142004_4ANaTv3h.png?type=f31_31",
