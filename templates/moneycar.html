@@ -9,6 +9,7 @@
 <body>
 {% include '/common/header.html' %}
 <h2 id="yearmoney">연봉</h2>
+
 <div id="total-drag">
     <div draggable="true" id="drag">
         ball
@@ -25,59 +26,42 @@
     <div id="d4000">
 
     </div>
-     <div id="d5000">
+    <div id="d5000">
 
     </div>
-     <div id="d6000">
+    <div id="d6000">
 
     </div>
-     <div id="d7000">
+    <div id="d7000">
 
     </div>
-     <div id="d8000">
+    <div id="d8000">
 
     </div>
-     <div id="d9000">
+    <div id="d9000">
 
     </div>
 </div>
-<form id="moneyForm" action="/api/car/from-range">
+
+
+<form id="moneyForm">
     <div id="money-total">
         <input disabled name="min-money" id="your-min-Money" type="text"/>
-
         <button id="moneyok" type="submit">확인</button>
     </div>
 </form>
 
-{% for i in data %} {% if i == data[0] %}
-    <div id="Total">
-        <div id="Image"><img id="realImage" src={{ i["car_img"] }}></div>
-        <div id="Desc">
-            <h5>
-                차 모델 : {{ i["car_name"] }} <br/>
-                크기 : {{ i["car_type"] }} <br/>
-                차 가격 : {{ i["car_price_full"] }} <br/>
-                연료 : {{ i["car_fuel"] }} <br/>
-                연비 : {{ i["car_fuel_efficiency"] }}
-            </h5>
-        </div>
-    </div>
-{% else %}
-    <div id="Last-Total">
-        <div id="Last-Image">
-            <img id="Last-realImage" src={{ i["car_img"] }}>
-        </div>
-        <div id="Last-Desc">
-            <h5 id="list">
-                차 모델 : {{ i["car_name"] }} <br/>
-                크기 : {{ i["car_type"] }} <br/>
-                차 가격 : {{ i["car_price_full"] }} <br/>
-                연료 : {{ i["car_fuel"] }} <br/>
-                연비 : {{ i["car_fuel_efficiency"] }}
-            </h5>
-        </div>
-    </div>
-{% endif %} {% endfor %}
+
+<div id="main_div">
+
+
+</div>
+
+
+<div id="sub_div">
+
+
+</div>
 
 
 <br/>
@@ -92,10 +76,74 @@
 <br/>
 <br/>
 <br/>
-
 
 
 <script src="/static/JS/drop.js"></script>
+<script>
+    const moneyForm = document.querySelector("#moneyForm")
+    const subdesc2 = document.querySelector("#list")
+    const main_div = document.querySelector("#main_div")
+    const sub_div = document.querySelector("#sub_div")
 
+    function preventSubmit(e) {
+        e.preventDefault()
+        fetch(`/car/from-range?min-money=${your_min_Money.value}`).then(res => res.json()).then(data => {
+            const listlive = document.querySelector(`#list`)
+            if (listlive == null) {
+                writingdiv(data)
+            } else {
+                deletediv()
+                writingdiv(data)
+            }
+        })
+    }
+
+    function deletediv() {
+
+        main_div.innerHTML = ""
+        sub_div.innerHTML = ""
+    }
+
+    function writingdiv(data) {
+        for (let i = 0; i < data.carlist.length; i++) {
+            if (i == 0) {
+                parent_div = document.createElement("div")
+                parent_div.id = "Total"
+                const total = template(i, data, "Image", "realImage", "Desc", "main-desc1")
+                parent_div.insertAdjacentHTML('beforeend', total);
+                main_div.append(parent_div)
+            } else {
+                parent_sub_div = document.createElement("div")
+                parent_sub_div.id = `Last-Total${i}`
+                const sublist = template(i, data, "Last-Image", "Last-realImage", "Last-Desc", "list")
+                parent_sub_div.insertAdjacentHTML('beforeend', sublist);
+                sub_div.append(parent_sub_div)
+            }
+        }
+    }
+
+
+    function template(i, data, LastImage, LastrealImage, LastDesc, list) {
+        return ` <div id=${LastImage}>
+                              <img id=${LastrealImage} src=${data.carlist[i].car_img}>
+                                                   </div>
+                                            <div id=${LastDesc}>
+                                                <h5 id=${list}>
+                                        차 이름 : ${data.carlist[i].car_name}
+                                                    <br/>
+                                          차 가격 : ${data.carlist[i].car_price}
+                                                    <br/>
+                                      차 크기 : ${data.carlist[i].car_type}
+                                                    <br/>
+                             차 연비 : ${data.carlist[i].car_fuel_efficiency}
+                                                    <br/>
+                                                      </h5>
+                                                </div>`
+    }
+
+
+    moneyForm.addEventListener("submit", preventSubmit)
+
+</script>
 </body>
 </html>

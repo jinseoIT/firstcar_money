@@ -2,7 +2,7 @@ from flask import render_template, Blueprint, request, jsonify
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
-import requests
+
 
 api_car = Blueprint('api_car', __name__, template_folder="templates")
 

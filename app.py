@@ -1,3 +1,4 @@
+import jwt
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify, make_response, redirect
 
@@ -11,6 +12,8 @@ import moneyhope
 
 load_dotenv(verbose=True)
 
+jwtAlgorithm = os.getenv('JWT_ALGORITHM')
+jwtKey = os.getenv('JWT_KEY')
 dbId = os.getenv('DB_ADMIN_ID')
 dbPw = os.getenv('DB_ADMIN_PW')
 
@@ -29,6 +32,7 @@ db = client.dbfirtcar
 # main
 @app.route('/')
 def home():
+
     return render_template('main.html')
 
 
@@ -44,6 +48,7 @@ def nickname_Chk():
 
 @app.route('/login')
 def login_User():
+
     return render_template('login.html')
 
 
@@ -84,3 +89,17 @@ def logout():
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+
+ # 로그인 유저 인증
+    # isLogin = False
+    # mytoken = request.cookies.get("token")
+    # try:
+    #     jwt.decode(mytoken, jwtKey, algorithms=[jwtAlgorithm])
+    #
+    # except jwt.exceptions.DecodeError:
+    #     print("로그인해라")
+    #     return jsonify({"isLogin":isLogin, "msg":"로그인 해주세요"})
+    #
+    # except jwt.ExpiredSignatureError:
+    #     print("시간다됬다")
+    #     return jsonify({"isLogin": isLogin, "msg": "로그인 시간이 만료되었습니다"})
