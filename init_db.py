@@ -68,9 +68,9 @@ def get_urls():
         # print(car_price)
 
 def insert_carInfo(url, pageNum):
-    print('3')
+
     strPage = str(pageNum)
-    print('44')
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     # data = requests.get('https://auto.naver.com/car/mainList.nhn?page=1', headers=headers)
@@ -190,27 +190,32 @@ def crulEffi(effi):
 
 
 def insert_cars():
-    print(1);
     # 시판모델 최신 출시일 desc url
-    newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
-    #외제차 테스트
-    newModelPageCnt = 7
+    #newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
+
+    #newModelPageCnt = 7
 
     # 단종모델 최신 출시일 desc url
-    oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
-    oldModelPageCnt = 17
+    #oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
+    #oldModelPageCnt = 17
+
+    # 해외 모델
+    outCarUrl = 'https://auto.naver.com/car/mainList.nhn?importYn=Y'
+    outCarCnt = 10
 
     #db reset
     # 디비 제거
     #db.carInfo.drop()
 
     # 단종모델 insert
-    for i in range(1, oldModelPageCnt + 1):
-        insert_carInfo(oldModelUrl, i)
-    # 시판모델 insert
-    for i in range(1, newModelPageCnt+1):
-        insert_carInfo(newModelUrl, i)
-
+    # for i in range(1, oldModelPageCnt + 1):
+    #     insert_carInfo(oldModelUrl, i)
+    # # 시판모델 insert
+    # for i in range(1, newModelPageCnt+1):
+    #     insert_carInfo(newModelUrl, i)
+    # 해외모델 insert
+    for i in range(1, outCarCnt+1):
+        insert_carInfo(outCarUrl, i)
 
 def insert_test():
     doc = {

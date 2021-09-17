@@ -171,7 +171,7 @@ const openModal = function(...obj){
 }
 
 const updateCmmt =  () => {
-    console.log("탔다./")
+
     const cmmtId = document.querySelector('#modal_cmmt_id');
     const nick = document.querySelector('#modal_nickName');
     const content = document.querySelector('#modal_content');
@@ -280,8 +280,8 @@ const closeLoginModal = ()=>{
 
 
 // 텍스트 에어리어에 포커스를 클릭했을때! 토큰 기준으로 모달on/off 확인함
-const auth =(e)=>{
-    e.preventDefault()
+const auth =()=>{
+    //e.preventDefault();
     // 토큰이 없으면!
     if(!token){
         loginModal.classList.remove("modalOutside-hide");

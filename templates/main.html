@@ -4,6 +4,7 @@
     {% include '/common/head.html' %}
     <link rel="stylesheet" href="/static/CSS/video.css" />
     <script src="/static/JS/youtube.js" defer></script>
+<<<<<<< HEAD
     <link rel="stylesheet" href="../static/CSS/main.css" />
   </head>
   <body>
@@ -76,3 +77,117 @@
     {% include '/common/footer.html' %}
   </body>
 </html>
+=======
+    <link rel="stylesheet" href="../static/CSS/main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollToPlugin.min.js" integrity="sha512-1OG9UO4krPizjtz/c9iDbjCqtXznBYdJeD4ccPaYfJHzC6F1qoQ3P1bgQ3J8lgCoK5qGVCqsY4+/RKjLDzITVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+    integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        #to-top {
+            width: 42px;
+            height: 42px;
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9;
+            background-image: url("https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/ffffff/external-up-arrow-miscellaneous-kiranshastry-solid-kiranshastry.png");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+        <body>
+
+        <!-- header  -->
+        {% include '/common/header.html' %}
+        <!-- youtube -->
+        <section class="youtube container-fluid">
+            <div class="youtube__area row">
+                <div id="player" class="video col-12"></div>
+             </div>
+        </section>
+        <!-- 차량 링크 -->
+        <section class="container">
+            <div class="linkPage">
+                <div class="page">
+                    <a href="/api/car/from-range" class="text">연봉별 차량 보러가기</a>
+                    <hr width="95%">
+                    <a href="/api/car/from-range" class="img"></a>
+                    <button onclick="location.href='/api/car/from-range'" class="btn">연봉별 차량 보러가기</button>
+                </div>
+                <div class="page">
+                    <a href="/car/list" class="text">국내 차량 보러가기</a>
+                    <hr width="95%">
+                    <a href="/car/list" class="img2"></a>
+                    <button onclick="location.href='/car/list'" class="btn">국내 차량 보러가기</button>
+                </div>
+            </div>
+        </section>
+        <!-- 중고차 사이트 링크 -->
+        <section class="recommend">
+            <div class="site"> 중고차 사이트 TOP4</div>
+            <div class="site_content">신차가 부담되는 사회초년생들을 위한 중고차 사이트를 소개합니다</div>
+            <hr class="saler" width="40%">
+            <br width="100%">
+            <div class="usedCarTop4">
+                <div class="usedCarSite">
+                    <a target="_blank" href="https://www.kcar.com/index.do?gclid=Cj0KCQjws4aKBhDPARIsAIWH0JWU5NPEJ2suy-0MyhYyaqhuM_O6Ra5CtkiAWGpfg8mWhIr-C0wWm0gaAkkdEALw_wcB" class="usedCar_a">
+                    </a>
+                    <a target="_blank" href="https://www.kbchachacha.com/?la_gc=TR10062602448&la_src=sa&la_cnfg=134149&gclid=Cj0KCQjws4aKBhDPARIsAIWH0JV4jAcL1q3CYB5XQMBpcKxp1cFGn_-0C4GSBr_fsW9NhYiylu9yxfIaAjUxEALw_wcB" class="usedCar_b">
+                    </a>
+                    <a target="_blank" href="http://www.encar.com/index.do" class="usedCar_c">
+                    </a>
+                    <a target="_blank" href="https://www.autobell.co.kr:444/main.do?utm_source=google&utm_medium=cpc&utm_campaign=2021june&utm_content=pc_ppl_1&utm_term=%EC%98%A4%ED%86%A0%EB%B2%A8&gclid=Cj0KCQjws4aKBhDPARIsAIWH0JW-AKG_Cw5tym3yT_2YoER5YYDZlk-G1M5tKCfpYbZHgDyqKsFIAZgaAmB_EALw_wcB" class="usedCar_d">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <div id="to-top">
+    <div class="material-icons"></div>
+</div>
+    {% include '/common/footer.html' %}
+    <script>
+        const toTopEl = document.querySelector('#to-top');
+
+        window.addEventListener('scroll', _.throttle(function () {
+            console.log(window.scrollY);
+            if (window.scrollY > 700) {
+                //버튼 보이기!
+                gsap.to(toTopEl, .2, {
+                    x: 0
+                });
+            } else {
+                //버튼 숨기기!
+                gsap.to(toTopEl, .2, {
+                    x: 100
+                });
+            }
+        }, 300));
+        // _.throttle(함수, 시간)
+
+        toTopEl.addEventListener('click', function () {
+            gsap.to(window, .7, {
+                scrollTo: 0
+            });
+        });
+    </script>
+        </body>
+</html>
+>>>>>>> f144e17087315c9aef3c9d2a64d18530a711bca3

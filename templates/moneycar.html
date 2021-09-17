@@ -33,14 +33,14 @@
         <div class="col-12 title_car__area">
         <!--대표 차량 이미지 영역-->
             <div class="img__area">
-              <span id="mainCar_name" class="car_name">현대 아반떼 N (7세대)</span>
+              <span id="mainCar_name" class="car_name">{{carInfo.car_name}}</span>
               <img
-                  src="https://imgauto-phinf.pstatic.net/20201012_68/auto_1602467608842ju1sY_PNG/20201012105317_fz5Nqq8e.png?type=f160_116"
+                  src="{{carInfo.car_img}}"
                   id ="mainCar_img"
               >
               <div class="logo">
-                <img
-                  src="https://imgauto-phinf.pstatic.net/20180529_88/auto_1527592677868AxMTJ_PNG/20180529201748_nbVe4EOk.png?type=f31_31"
+                <imgn
+                  src="{{carInfo.car_maker_img}}"
                   id="mainCar_logo"
                 >
               </div>
@@ -50,17 +50,17 @@
               <div class="title_car_info">
                 <p class="price">
                   <span>가격</span>
-                  <span id="mainCar_price">3500~4200만원</span>
+                  <span id="mainCar_price">{{carInfo.car_price_full}}</span>
                 </p>
                 <dl class="detail_lst">
                   <dt>연식</dt>
-                  <dd id="mainCar_age">2021년</dd>
+                  <dd id="mainCar_age">{{carInfo.car_age}}</dd>
                   <dt>연비</dt>
-                  <dd id="mainCar_fuel_effi">11.4/L</dd>
+                  <dd id="mainCar_fuel_effi">{{carInfo.car_fuel_efficiency}}</dd>
                   <dt>연료</dt>
-                  <dd id="mainCar_fuel">가솔린</dd>
+                  <dd id="mainCar_fuel">{{carInfo.car_fuel}}</dd>
                   <dt>차종</dt>
-                  <dd id="mainCar_type">준중형</dd>
+                  <dd id="mainCar_type">{{carInfo.car_type}}</dd>
                 </dl>
              </div>
             </div>
