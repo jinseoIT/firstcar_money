@@ -215,7 +215,7 @@ body {
     /*  Footer  */
 
     .footer__container{
-        z-index: 10000;
+        z-index: -1;
     }
     .footer__container .logoAndDesc {
         margin-top: 20px;

@@ -49,10 +49,7 @@ def check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access):
 def check_Login(user_Email,user_PassWord):
 
     user = db.Users.find_one({"user_Email": user_Email})
-    print(user)
-    user_Nick = user["user_Nick"]
-    print(user_Nick)
-    user_Nick = user["user_Nick"]
+
 
 
     # 아이디 혹은 비밀번호가 틀릴때
@@ -60,6 +57,7 @@ def check_Login(user_Email,user_PassWord):
         return jsonify({"Success": False, 'msg': '아이디 혹은 비밀번호가 잘못되었습니다'})
     # 해쉬된 비밀번호와 비교
     else:
+        user_Nick = user["user_Nick"]
         user_PassWord = user_PassWord.encode('utf-8')
         result = bcrypt.checkpw(user_PassWord, user['user_PassWord'])
         # 비밀번호가 맞지 않을 경우
