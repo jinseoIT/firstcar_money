@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from flask import Flask, jsonify, render_template, request, Blueprint
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
@@ -37,6 +36,7 @@ db = client.firstcar.comments
 ####### 클라에서 보낸 데이터 받아서 db에 저장 ########
 @api_comment.route('/api/comment-add', methods=['POST'])
 def saving():
+    
     userId_receive = request.form['userId_give']
     nickname_receive = request.form['nickname_give'];
     comment_receive = request.form['comment_give'];

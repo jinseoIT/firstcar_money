@@ -1,5 +1,4 @@
 import json
-
 from flask import request, Blueprint, Flask, render_template, jsonify
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -22,6 +21,12 @@ app_money = Blueprint('api_money', __name__, template_folder="templates")
 
 @app_money.route('/car/from-range')
 def your_money():
+    user_min_money = request.args.get("min-money")
+
+    if user_min_money:
+        user_min_money = int(user_min_money.replace(",", "").replace("만원",""))
+        user_max_money = user_min_money + 1000
+        user_car = list(db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}},{'_id': False}))
 
     user_car = list(db.carInfo.find({'car_price': {"$gte": 2000, "$lte": 3000}}).limit(40))
 
@@ -31,7 +36,7 @@ def your_money():
         carList = random.sample(user_car, 5)
     carInfo = carList[0]
     carList.pop(0)
-    return render_template('moneycar.html', carList = carList, carInfo = carInfo)
+    return render_template('moneycar.html', carList = carList, carInfo =carInfo)
 
 
 
@@ -40,20 +45,23 @@ def your_money():
 def getCarList_byMoney():
     user_min_money = request.args.get("min-money")
     carList = []
-
+    print('1', user_min_money)
     if user_min_money:
         user_min_money = int(user_min_money)
         user_max_money = user_min_money + 1000
 
-        user_car = list(
-            db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}).limit(40))
+    print(user_min_money, user_max_money);
+    user_car = list(
+        db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}))
 
     if len(user_car) < 5:
         carList = random.sample(user_car, len(user_car))
     else:
         carList = random.sample(user_car, 5)
 
-        for _list in carList:
-            _list["_id"] = str(_list["_id"])
+    print(carList)
+    for _list in carList:
+        _list["_id"] = str(_list["_id"])
+
 
     return jsonify({"carList": carList})
