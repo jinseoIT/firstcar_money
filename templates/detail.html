@@ -114,7 +114,10 @@
             const addLike = (carId) => {
                 console.log('버튼누름', carId)
                 const token = getCookieValue("token")
-                if(token){ authChk() }
+                if(token){
+                    //authChk()
+                     alert('추천 등록을 완료하였습니다!');
+                     }
                 else{auth()}
 
             }

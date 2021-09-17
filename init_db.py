@@ -1,6 +1,6 @@
 import pymongo
 import requests
-from bs4 import BeautifulSoup
+
 from pymongo import MongoClient
 import re
 import os
@@ -219,21 +219,21 @@ def insert_cars():
 
 def insert_test():
     doc = {
-        'car_name': "렉서스 LS",
+        'car_name': "2021 아우디 S6",
         'car_age': 2021,
-        'car_img': "https://imgauto-phinf.pstatic.net/20201201_214/auto_1606794934587jrJkp_PNG/20201201125521_f6qCMA8X.png?type=f160_116",
-        'car_maker_img': "https://imgauto-phinf.pstatic.net/20170707_151/auto_1499404806991Xuw2o_PNG/20170707142004_4ANaTv3h.png?type=f31_31",
+        'car_img': "https://imgauto-phinf.pstatic.net/20210205_120/auto_1612496606060tmTB3_PNG/20210205124311_AogODSLA.png?type=f567_410",
+        'car_maker_img': "https://imgauto-phinf.pstatic.net/20170707_207/auto_1499404828979BICft_PNG/20170707142026_ovRGcdML.png?type=f50_50",
         'car_type': "준대형",
-        'car_fuel': "가솔린",
-        'car_fuel_efficiency': "6.4~9.2ℓ/100km",
-        'car_fuel_basic': 9.1,
-        'car_price_full': "1억60만원~1억1,960만원",
-        'car_price': 10060
+        'car_fuel': "디젤",
+        'car_fuel_efficiency': "8.7~10.7km/ℓ",
+        'car_fuel_basic': 8.7,
+        'car_price_full': "1억746만원",
+        'car_price': 17460
     }
     db.carInfo.insert_one(doc)
     print('완료!!')
 
 ## 실행하기
-#insert_cars()
+# insert_cars()
 insert_test()
 #get_urls()

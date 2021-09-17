@@ -48,7 +48,7 @@ function Login(e) {
 
 function Regist() {
   Form.addEventListener("submit", Prevent);
-  window.location = "/user/register";
+  window.location = "/register";
 }
 
 Login_button.addEventListener("click", Login);

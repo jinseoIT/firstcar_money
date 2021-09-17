@@ -36,7 +36,7 @@ function Submit() {
   } else if (regist_Data.PassWord.length < 6) {
     return alert("비밀번호는 6글자 이상 입력해야 합니다");
   } else {
-    fetch("/api/user/register-Process", {
+    fetch("/api/user/regist-process", {
       method: "POST",
       body: JSON.stringify(regist_Data),
       headers: {
