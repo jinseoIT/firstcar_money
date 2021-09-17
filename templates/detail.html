@@ -15,20 +15,24 @@
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="img_button">
+                                 <div class="company_logo">
+                                </div>
                                 <div class="car_img">
+                                    <button>
+                                        <img class="logo_photo"  src='{{carInfo.car_maker_img}}'  alt='{{carInfo.car_name}}'>
+                                    </button>
                                     <img class="car_photo" src='{{carInfo.car_img}}'
                                          alt='{{car_name}}'>
                                 </div>
-                                <button class="like">좋아요</button>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="info">
-                                <div class="company_logo">
-                                    <button><img class="logo_photo"
-                                            src='{{carInfo.car_maker_img}}'
-                                            alt='{{carInfo.car_name}}'></button>
-                                </div>
+<!--                                <div class="company_logo">-->
+<!--                                    <button><img class="logo_photo"-->
+<!--                                            src='{{carInfo.car_maker_img}}'-->
+<!--                                            alt='{{carInfo.car_name}}'></button>-->
+<!--                                </div>-->
                                 <div class="description">
                                     <h1>{{carInfo.car_name}}</h1>
                                     <strong>{{carInfo.car_age}}형</strong>
@@ -38,6 +42,7 @@
                                          <li><span>연료</span>{{carInfo.car_fuel}}</li>
                                          <li><span>차타입</span>{{carInfo.car_type}}</li>
                                     </ul>
+                                    <button class="like">추천</button>
                                 </div>
                             </div>
                         </div>

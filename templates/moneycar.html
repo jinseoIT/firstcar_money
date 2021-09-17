@@ -4,7 +4,6 @@
     {% include '/common/head.html' %}
     <link rel="stylesheet" href="../static/CSS/car.css">
     <link rel="stylesheet" href="../static/CSS/range.css">
-    <script src="../static/JS/slidebar.js" defer async></script>
 </head>
 <body>
     <!-- header  -->
@@ -74,6 +73,32 @@
   <section class="container">
     <div class="row">
       <div class="col-12 car_card_area">
+
+           <!--  차량 카드   -->
+          {% for carInfo in carList %}
+            <div class="car_card">
+              <a href="/car/detail/{{ carInfo._id }}">
+              <div class="card_img_area">
+                <div class="logo">
+                    <img src="{{carInfo.car_maker_img}}">
+                </div>
+                    <img src="{{ carInfo.car_img }}">
+              </div>
+              </a>
+              <strong>{{ carInfo.car_name }}</strong>
+              <dl>
+                <dt>가격</dt>
+                <dd class="price">{{ carInfo.car_price_full }}</dd>
+                <dt>연식</dt>
+                <dd>{{ carInfo.car_age }}</dd>
+                <dt>연비</dt>
+                <dd>{{ carInfo.car_fuel_efficiency}}</dd>
+                <dt>연료</dt>
+                <dd>{{ carInfo.car_fuel }}</dd>
+              </dl>
+            </div>
+        {% endfor %}
+
         </div>
       </div>
     </div>
@@ -81,9 +106,9 @@
 
     <!-- footer  -->
 {% include '/common/footer.html' %}
-
+<script src="../static/JS/slidebar.js"></script>
 <script>
-    window.onload = () => init();
+    // window.onload = () => init();
 
     const init = () => getCarListFromMoney(3000);
     function getCarListFromMoney (money) {
