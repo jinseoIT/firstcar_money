@@ -14,7 +14,6 @@ const your_min_Money = document.querySelector("#your-min-Money");
 
 drag.style.position = "relative"
 
-
 function prices(area_price, e) {
     drag.style.left = e.clientX - 20 + "px"
     your_min_Money.value = area_price + "만원"
@@ -27,20 +26,21 @@ function range(e, price) {
 
 
 function show_price(e) {
-    console.log(document.body.style.cursor)
+    console.log(e);
     range(e, e.path[0].id.replace("d", ""))
 
 }
 
 
+function point_image(e) {
+    console.log(e);
+    const img = new Image();
 
-function point_image(e){
-      const img = new Image();
-
-      e.dataTransfer.dropEffect = "copy";
     e.dataTransfer.setDragImage(img, 0, 0);
 
 }
+
+
 
 
 drag.addEventListener("dragstart", point_image)
@@ -54,4 +54,12 @@ d7000.addEventListener("dragover", show_price)
 d8000.addEventListener("dragover", show_price)
 d9000.addEventListener("dragover", show_price)
 
-
+// d1000.addEventListener("drop", )
+// d2000.addEventListener("drop", )
+// d3000.addEventListener("drop", )
+// d4000.addEventListener("drop", )
+// d5000.addEventListener("drop", )
+// d6000.addEventListener("drop", )
+// d7000.addEventListener("drop", )
+// d8000.addEventListener("drop", )
+// d9000.addEventListener("drop", )

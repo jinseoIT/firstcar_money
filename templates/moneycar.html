@@ -2,100 +2,176 @@
 <html lang="en">
 <head>
     {% include '/common/head.html' %}
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <link rel="stylesheet" href="/static/CSS/money.css"/>
+    <link rel="stylesheet" href="../static/CSS/car.css">
+    <link rel="stylesheet" href="../static/CSS/range.css">
 </head>
 <body>
-{% include '/common/header.html' %}
-<h2 id="yearmoney">연봉</h2>
-<div id="total-drag">
-    <div draggable="true" id="drag">
-        ball
-    </div>
-    <div id="d1000">
-        ㅡㅡㅡㅡ
-    </div>
-    <div id="d2000">
-        ㅡㅡㅡㅡ
-    </div>
-    <div id="d3000">
-        ㅡㅡㅡㅡ
-    </div>
-    <div id="d4000">
+    <!-- header  -->
+    {% include '/common/header.html' %}
 
-    </div>
-     <div id="d5000">
 
-    </div>
-     <div id="d6000">
+    <!--연봉 슬라이드 바 -->
+    <section class="container__slider_area">
+        <h2>연봉 : <span id="price"></span> 만원</h2>
+          <div class="slider-container">
+            <div class="track">
+              <div class="progress"></div>
+            </div>
+            <div class="thumb">
+              <div class="thumb-indicator" onDrop="drop()"></div>
+            </div>
+          </div>
+          <div class="slide_price">
+            <h3>2천 만원</h3>
+            <h3>1억 2천만원</h3>
+          </div>
+      </section>
 
-    </div>
-     <div id="d7000">
+    <!-- 대표 차량 -->
+  <section class="container title_car__container">
+      <dis class="row">
+        <div class="col-12 title_car__area">
+        <!--대표 차량 이미지 영역-->
+            <div class="img__area">
+              <span id="mainCar_name" class="car_name">현대 아반떼 N (7세대)</span>
+              <img
+                  src="https://imgauto-phinf.pstatic.net/20201012_68/auto_1602467608842ju1sY_PNG/20201012105317_fz5Nqq8e.png?type=f160_116"
+                  id ="mainCar_img"
+              >
+              <div class="logo">
+                <img
+                  src="https://imgauto-phinf.pstatic.net/20180529_88/auto_1527592677868AxMTJ_PNG/20180529201748_nbVe4EOk.png?type=f31_31"
+                  id="mainCar_logo"
+                >
+              </div>
+            </div>
+        <!--대표차량 정보 영역-->
+            <div class="car_info__area">
+              <div class="title_car_info">
+                <p class="price">
+                  <span>가격</span>
+                  <span id="mainCar_price">3500~4200만원</span>
+                </p>
+                <dl class="detail_lst">
+                  <dt>연식</dt>
+                  <dd id="mainCar_age">2021년</dd>
+                  <dt>연비</dt>
+                  <dd id="mainCar_fuel_effi">11.4/L</dd>
+                  <dt>연료</dt>
+                  <dd id="mainCar_fuel">가솔린</dd>
+                  <dt>차종</dt>
+                  <dd id="mainCar_type">준중형</dd>
+                </dl>
+             </div>
+            </div>
 
-    </div>
-     <div id="d8000">
-
-    </div>
-     <div id="d9000">
-
-    </div>
-</div>
-<form id="moneyForm" action="/api/car/from-range">
-    <div id="money-total">
-        <input disabled name="min-money" id="your-min-Money" type="text"/>
-
-        <button id="moneyok" type="submit">확인</button>
-    </div>
-</form>
-
-{% for i in data %} {% if i == data[0] %}
-    <div id="Total">
-        <div id="Image"><img id="realImage" src={{ i["car_img"] }}></div>
-        <div id="Desc">
-            <h5>
-                차 모델 : {{ i["car_name"] }} <br/>
-                크기 : {{ i["car_type"] }} <br/>
-                차 가격 : {{ i["car_price_full"] }} <br/>
-                연료 : {{ i["car_fuel"] }} <br/>
-                연비 : {{ i["car_fuel_efficiency"] }}
-            </h5>
         </div>
-    </div>
-{% else %}
-    <div id="Last-Total">
-        <div id="Last-Image">
-            <img id="Last-realImage" src={{ i["car_img"] }}>
+      </dis>
+  </section>
+
+     <!-- car_list -->
+  <section class="container">
+    <div class="row">
+      <div class="col-12 car_card_area">
+
+           <!--  차량 카드   -->
+          {% for carInfo in carList %}
+            <div class="car_card">
+              <a href="/car/detail/{{ carInfo._id }}">
+              <div class="card_img_area">
+                <div class="logo">
+                    <img src="{{carInfo.car_maker_img}}">
+                </div>
+                    <img src="{{ carInfo.car_img }}">
+              </div>
+              </a>
+              <strong>{{ carInfo.car_name }}</strong>
+              <dl>
+                <dt>가격</dt>
+                <dd class="price">{{ carInfo.car_price_full }}</dd>
+                <dt>연식</dt>
+                <dd>{{ carInfo.car_age }}</dd>
+                <dt>연비</dt>
+                <dd>{{ carInfo.car_fuel_efficiency}}</dd>
+                <dt>연료</dt>
+                <dd>{{ carInfo.car_fuel }}</dd>
+              </dl>
+            </div>
+        {% endfor %}
+
         </div>
-        <div id="Last-Desc">
-            <h5 id="list">
-                차 모델 : {{ i["car_name"] }} <br/>
-                크기 : {{ i["car_type"] }} <br/>
-                차 가격 : {{ i["car_price_full"] }} <br/>
-                연료 : {{ i["car_fuel"] }} <br/>
-                연비 : {{ i["car_fuel_efficiency"] }}
-            </h5>
-        </div>
+      </div>
     </div>
-{% endif %} {% endfor %}
+  </section>
 
+    <!-- footer  -->
+{% include '/common/footer.html' %}
+<script src="../static/JS/slidebar.js"></script>
+<script>
+    // window.onload = () => init();
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+    const init = () => getCarListFromMoney(3000);
+    function getCarListFromMoney (money) {
+        console.log('내연봉 = '+ money);
+        fetch(`/api/car/from-range?min-money=${money}`)
+          .then(res => res.json())
+          .then(data => renderData(data))
+          .catch(err => console.log(err))
+    }
 
+    /* 차량 정보들을 넣어준다. */
+    function renderData(data){
+        const _list = data.carList;
+        console.log(_list);
+      if(_list){
+        setMainCar(_list[0]);
+        setSubCars(_list);
+      }
+    }
 
+    const setMainCar = (carInfo) => {
+        console.log('차량정보', carInfo);
+        document.querySelector('#mainCar_img').src = carInfo.car_img;
+        document.querySelector('#mainCar_logo').src = carInfo.car_maker_img;
+        document.querySelector('#mainCar_price').innerText = carInfo.car_price_full;
+        document.querySelector('#mainCar_age').innerText = carInfo.car_age;
+        document.querySelector('#mainCar_fuel_effi').innerText = carInfo.car_fuel_efficiency;
+        document.querySelector('#mainCar_fuel').innertText = carInfo.car_fuel;
+        document.querySelector('#mainCar_name').innerText = carInfo.car_name;
+        document.querySelector('#mainCar_type').innerText = carInfo.car_type;
+    }
 
-<script src="/static/JS/drop.js"></script>
+    const setSubCars = (list) => {
+        let str = '';
+        for (let i=1; i<list.length;i+=1) {
+          str += `<div class="car_card">
+          <div class="card_img_area">
+             <a href="/car/detail/${list[i]._id}">
+              <div class="card_img_area">
+                <div class="logo">
+                    <img src="${list[i].car_maker_img}">
+                </div>
+                    <img src="${list[i].car_img}">
+              </div>
+          </a>
+          </div>
+          <strong>${list[i].car_name}</strong>
+          <dl>
+            <dt>가격</dt>
+            <dd class="price">${list[i].car_price_full}</dd>
+            <dt>연식</dt>
+            <dd>${list[i].car_age}</dd>
+            <dt>연비</dt>
+            <dd>${list[i].car_fuel_efficiency}</dd>
+            <dt>연료</dt>
+            <dd>${list[i].car_fuel}</dd>
+          </dl>
+          </div>`;
+      }
+         const cardArea = document.querySelector('.car_card_area');
+         cardArea.innerHTML = str;
+    }
 
+</script>
 </body>
 </html>

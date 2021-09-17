@@ -3,30 +3,33 @@
 <head>
     {% include '/common/head.html' %}
     <meta charset="UTF-8">
-    <title>회원가입</title>
+    <title>로그인</title>
     <link rel="stylesheet" href="../static/CSS/login.css">
 </head>
 <body>
-{% include '/common/header.html' %}
-<section class="signin">
-    <h1>회원가입</h1>
-    <div class="signin__card">
-      <h2>
-        <strong><a href="/">첫 차 Money?</a></strong>
-      </h2>
-      <form id="register_Form">
-        <span>아이디</span>
-        <input id="ID_Input" type="email" placeholder="아이디를 입력하세요.">
-        <span>비밀번호</span>
-        <input id="passWord_Input" type="password" placeholder="비밀번호를 입력하세요.">
-        <div class="login__join">
-            <input id="Login_button" type="submit" value="확인">
-            <input id="Regist_button" type="submit" value="회원가입">
+
+<section class="signin container-fluid">
+    <div class="row">
+        <div class="col-12">
+        <h1>회원가입</h1>
+        <div class="signin__card">
+          <h2>
+            <strong><a href="/">첫 차 Money?</a></strong>
+          </h2>
+          <form id="register_Form">
+            <span>아이디</span>
+            <input id="ID_Input" type="email" placeholder="아이디를 입력하세요.">
+            <span>비밀번호</span>
+            <input id="passWord_Input" type="password" placeholder="비밀번호를 입력하세요.">
+            <div class="login__join">
+                <input id="Login_button" type="submit" value="확인">
+                <input id="Regist_button" type="submit" value="회원가입">
+            </div>
+          </form>
         </div>
-      </form>
-  </div>
-  </section>
-</div>
+        </div>
+    </div>
+</section>
 <script src="../static/JS/login.js"></script>
 {% include '/common/footer.html' %}
 </body>

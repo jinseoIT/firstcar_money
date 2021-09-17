@@ -11,7 +11,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 client = MongoClient('mongodb+srv://'+dbId+':'+dbPw+'@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                      '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
 
 
@@ -68,8 +68,9 @@ def get_urls():
         # print(car_price)
 
 def insert_carInfo(url, pageNum):
-
+    print('3')
     strPage = str(pageNum)
+    print('44')
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     # data = requests.get('https://auto.naver.com/car/mainList.nhn?page=1', headers=headers)
@@ -112,7 +113,7 @@ def insert_carInfo(url, pageNum):
             'car_price_full': car_price_full,
             'car_price': car_price
         }
-        db.carInfo.insert_one(doc)
+        db.carInfoDev.insert_one(doc)
         print('완료!!', car_name)
 
 # 차량 가격 정규화
@@ -189,24 +190,45 @@ def crulEffi(effi):
 
 
 def insert_cars():
+    print(1);
     # 시판모델 최신 출시일 desc url
     newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
+    #외제차 테스트
     newModelPageCnt = 7
+
     # 단종모델 최신 출시일 desc url
     oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
-    oldModelPageCnt = 35
+    oldModelPageCnt = 17
 
     #db reset
-    db.carInfo.drop()
+    # 디비 제거
+    #db.carInfo.drop()
+
     # 단종모델 insert
     for i in range(1, oldModelPageCnt + 1):
         insert_carInfo(oldModelUrl, i)
-
     # 시판모델 insert
     for i in range(1, newModelPageCnt+1):
         insert_carInfo(newModelUrl, i)
 
 
+def insert_test():
+    doc = {
+        'car_name': "2021 벤츠 GLE클래스",
+        'car_age': 2021,
+        'car_img': "https://imgauto-phinf.pstatic.net/20210308_220/auto_1615176512715t6jiC_PNG/20210308130820_5vFxVOXq.png?type=f160_116",
+        'car_maker_img': "https://imgauto-phinf.pstatic.net/20170707_151/auto_1499404806991Xuw2o_PNG/20170707142004_4ANaTv3h.png?type=f31_31",
+        'car_type': "준대형",
+        'car_fuel': "디젤, 가솔린",
+        'car_fuel_efficiency': "8.7~10.7km/ℓ",
+        'car_fuel_basic': 8.7,
+        'car_price_full': "9,970~1억1,860만원",
+        'car_price': 9970
+    }
+    db.carInfo.insert_one(doc)
+    print('완료!!')
+
 ## 실행하기
 insert_cars()
+#insert_test()
 #get_urls()

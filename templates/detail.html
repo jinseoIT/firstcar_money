@@ -2,51 +2,53 @@
 <html lang="en">
     <head>
         {% include '/common/head.html' %}
-        <link rel="stylesheet" href="../static/CSS/detail.css">
+        <link rel="stylesheet" href="/static/CSS/detail.css">
     </head>
     <body>
         <!-- header  -->
         {% include '/common/header.html' %}
 
+        <input type="hidden" id="carid_info" value="{{ carId }}">
         {#     body       #}
         <section class="car_detail">
-            <div class="img_info">
-                <div class="container">
+                  <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="img_button">
-                                <div class="car_img">
-                                    <img src="https://img1.daumcdn.net/thumb/R380x0/?fname=%2Fmedia%2Fvitraya%2Fauto%2Fimage%2F5cd55c%2F82EF11602099EA14C34589A7899759089E3C27ECD6C803330F_4EVM"
-                                         alt="">
+                                 <div class="company_logo">
                                 </div>
-                                <button class="like">좋아요</button>
+                                <div class="car_img">
+                                    <button>
+                                        <img class="logo_photo"  src='{{carInfo.car_maker_img}}'  alt='{{carInfo.car_name}}'>
+                                    </button>
+                                    <img class="car_photo" src='{{carInfo.car_img}}'
+                                         alt='{{car_name}}'>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="info">
-                                <div class="company_logo">
-                                    <button><img
-                                            src="https://img1.daumcdn.net/thumb/P36x36/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmedia%2Fimg-section%2Fauto2017%2Fcompany%2Fbd40001500p2.png"
-                                            alt=""></button>
-                                </div>
+<!--                                <div class="company_logo">-->
+<!--                                    <button><img class="logo_photo"-->
+<!--                                            src='{{carInfo.car_maker_img}}'-->
+<!--                                            alt='{{carInfo.car_name}}'></button>-->
+<!--                                </div>-->
                                 <div class="description">
-                                    <h1>볼보 XC60 플러그인 하이브리드 F/L (2세대)</h1>
-                                    <strong>2022년형</strong>
+                                    <h1>{{carInfo.car_name}}</h1>
+                                    <strong>{{carInfo.car_age}}형</strong>
                                     <ul>
-                                        <li><span>가격</span>8370만원</li>
-                                        <li><span>연비</span>10.8km/l</li>
-                                        <li><span>연료</span>하이브리드</li>
-                                        <li><span>배기량</span>1969cc</li>
-                                        <li><span>정원</span>5</li>
+                                         <li><span>가격</span>{{carInfo.car_price_full}}</li>
+                                         <li><span>연비</span>{{carInfo.car_fuel_efficiency}}</li>
+                                         <li><span>연료</span>{{carInfo.car_fuel}}</li>
+                                         <li><span>차타입</span>{{carInfo.car_type}}</li>
                                     </ul>
+                                    <button class="like">추천</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                  </div>
         </section>
-
         {# 댓글 영역 #}
         <article>
             <div class="container">
@@ -55,33 +57,32 @@
                         <h1>🚗 자동차 토크</h1>
                         <hr>
                         <div class="add_comment">
-                            <textarea class="comment_area" placeholder="안녕하세요"></textarea>
+                            <textarea class="comment_area" placeholder="자동차에 대하여 자유롭게 글을 써주세요!"></textarea>
                             <div class="buttons-group">
                                 <button type="submit" class="submitBtn">제출</button>
-                                <button type="button">취소</button>
                             </div>
                         </div>
                         <ul class="comment_list">
 
                             <!--  댓글 리스트  -->
-                            <li class="comment_group">
-
-                                <div class="id_time">
-                                    <h3>kokyusik91</h3>
-                                    <span>2021-10</span>
-                                </div>
-
-                                <div class="comment">이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차
-                                    개별로임이 차 이 차 개별로임이 차 개이임이 차 개이 차 개별로임이 차
-                                </div>
-
-
-                                <div class="buttons-group">
-                                    <button class="modified"><i class="far fa-edit"></i></button>
-                                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                                </div>
-
-                            </li>
+{#                            <li class="comment_group">#}
+{##}
+{#                                <div class="id_time">#}
+{#                                    <h3>kokyusik91</h3>#}
+{#                                    <span>2021-10</span>#}
+{#                                </div>#}
+{##}
+{#                                <div class="comment">이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차#}
+{#                                    개별로임이 차 이 차 개별로임이 차 개이임이 차 개이 차 개별로임이 차#}
+{#                                </div>#}
+{##}
+{##}
+{#                                <div class="buttons-group">#}
+{#                                    <button class="modified"><i class="far fa-edit"></i></button>#}
+{#                                    <button class="delete"><i class="fas fa-trash-alt"></i></button>#}
+{#                                </div>#}
+{##}
+{#                            </li>#}
 
                         </ul>
                     </div>
@@ -95,12 +96,12 @@
                 <div class="comment_group">
                     <div class="id_time">
                         <input type="hidden" id="modal_cmmt_id"/>
-                        <h3 id="modal_nickName">닉네임</h3>
-                        <span id="modal_reg_dt">2021-02-22</span>
+                        <h3 id="modal_nickName"></h3>
+                        <span id="modal_reg_dt"></span>
                     </div>
                     <textarea id="modal_content" class="modifiRandom"></textarea>
                     <div class="modal-buttons-group">
-                        <button onclick="updateCmmt()" class="confirmBtn">수정</button>
+                        <button onclick="updateCmmt()" class="confirmBtn" >수정</button>
                         <button class="cancelBtn">취소</button>
                     </div>
                 </div>
@@ -113,20 +114,24 @@
                 <div class="comment_group">
                     <h1 id="modal_nickName">😡로그인 하시라고요.</h1>
                     <div class="modal-buttons-group">
-                        <button class="confirmBtn" onclick="location.href='http://127.0.0.1:5000/user/login'">로그인 하러가기</button>
-                        <button class="cancelBtn register" onclick="location.href='http://127.0.0.1:5000/user/register'">회원가입 하러가기</button>
+                        <button class="confirmBtn" onclick="location.href='http://127.0.0.1:5000/user/login'">로그인 하러가기
+                        </button>
+                        <button class="cancelBtn register"
+                                onclick="location.href='http://127.0.0.1:5000/user/register'">회원가입 하러가기
+                        </button>
                     </div>
                 </div>
                 <button class="닫기"><i class="fas fa-times"></i></button>
             </div>
         </div>
+        <!-- footer  -->
+        {% include '/common/footer.html' %}
 
-
-            <!-- footer  -->
-            {% include '/common/footer.html' %}
-
-            <script src="../static/JS/detail.js"></script>
+        <script src="/static/JS/detail.js"></script>
     </body>
 </html>
+
+
+
 
 

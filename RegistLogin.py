@@ -15,7 +15,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 client = MongoClient(
     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                            '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
     # 유저가 입력한 아이디, 패스워드
 def check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access):
@@ -75,9 +75,7 @@ def check_Login(user_Email,user_PassWord):
             }
             Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)
 
-            print(Token)
-            print('-------------------')
-            print(jwt.decode(Token,jwtKey,algorithms=["HS256"]))
+
 
             userInfo = { 'userId': user_id, 'userName' : user['user_Nick']}
 

@@ -91,6 +91,12 @@
   color: #de3d3d;
 }
 
+.car_card .card_img_area .logo {
+  width:35px;
+  height:35px;
+  position: absolute;
+}
+
 /* more_btn */
 
 .more_btn_container {
@@ -114,11 +120,14 @@
   border: 1px solid #DBDEDF;
   padding: 4px 8px;
   margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 50px;
 }
 
 .more_btn_container button:hover {
   cursor: pointer;
 }
+
 
 
 @media screen and (max-width: 974px){

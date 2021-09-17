@@ -12,12 +12,23 @@ section .img_info{
 }
 
 .car_img{
-   transition : all ease-in 500ms;
+   /*transition : all ease-in 500ms;*/
+    position : relative;
 }
 .car_img:hover{
     /* transform : scale(1.1) */
-    position : relative;
-    transform : translateX(-40px)
+    /*transform : translateX(-40px)*/
+}
+
+.car_img .car_photo{
+    width : 300px;
+}
+
+.car_img .logo_photo{
+    width : 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .img_button{
@@ -28,21 +39,12 @@ section .img_info{
     align-items: center;
 }
 
-.img_button .like{
-    padding : 10px 30px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
-    transition : all  1000ms;
 
-}
-
-.img_button .like:hover{
-    background-color: #ff4949;
-    color : white;
-    /* opacity: 0.4; */
-}
+/*.img_button .like:hover{*/
+/*    background-color: #ff4949;*/
+/*    color : white;*/
+/*    !* opacity: 0.4; *!*/
+/*}*/
 
 .info{
     /*background-color: rgba( 255, 255, 255, 0.3 );*/
@@ -52,13 +54,17 @@ section .img_info{
 
 .company_logo{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
+
+/*.company_logo .logo_photo{*/
+/*    width : 50px;*/
+/*}*/
 
 .description{
     display:flex;
     flex-direction: column;
-    text-align: right;
+    text-align: left;
 }
 
 .description strong{
@@ -72,6 +78,19 @@ section .img_info{
     color : #0066ff;
     margin-right : 10px;
     font-weight: bold;
+}
+
+.description .like{
+    padding : 10px 30px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+    transition : all  1000ms;
+    width: 95px;
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
 }
 
 /* Comment */
@@ -89,7 +108,7 @@ article .add_comment .comment_area{
     border: none;
     resize: none;
     border : 1px solid black;
-    width : 1000px;
+    width : 1060px;
 }
 
 
