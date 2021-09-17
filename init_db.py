@@ -68,9 +68,9 @@ def get_urls():
         # print(car_price)
 
 def insert_carInfo(url, pageNum):
-    print('3')
+
     strPage = str(pageNum)
-    print('44')
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     # data = requests.get('https://auto.naver.com/car/mainList.nhn?page=1', headers=headers)
@@ -190,45 +190,50 @@ def crulEffi(effi):
 
 
 def insert_cars():
-    print(1);
     # 시판모델 최신 출시일 desc url
-    newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
-    #외제차 테스트
-    newModelPageCnt = 7
+    #newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
+
+    #newModelPageCnt = 7
 
     # 단종모델 최신 출시일 desc url
-    oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
-    oldModelPageCnt = 17
+    #oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
+    #oldModelPageCnt = 17
+
+    # 해외 모델
+    outCarUrl = 'https://auto.naver.com/car/mainList.nhn?importYn=Y'
+    outCarCnt = 10
 
     #db reset
     # 디비 제거
     #db.carInfo.drop()
 
     # 단종모델 insert
-    for i in range(1, oldModelPageCnt + 1):
-        insert_carInfo(oldModelUrl, i)
-    # 시판모델 insert
-    for i in range(1, newModelPageCnt+1):
-        insert_carInfo(newModelUrl, i)
-
+    # for i in range(1, oldModelPageCnt + 1):
+    #     insert_carInfo(oldModelUrl, i)
+    # # 시판모델 insert
+    # for i in range(1, newModelPageCnt+1):
+    #     insert_carInfo(newModelUrl, i)
+    # 해외모델 insert
+    for i in range(1, outCarCnt+1):
+        insert_carInfo(outCarUrl, i)
 
 def insert_test():
     doc = {
-        'car_name': "2021 벤츠 GLE클래스",
+        'car_name': "2021 벤츠 E클래스 쿠페",
         'car_age': 2021,
-        'car_img': "https://imgauto-phinf.pstatic.net/20210308_220/auto_1615176512715t6jiC_PNG/20210308130820_5vFxVOXq.png?type=f160_116",
+        'car_img': "https://imgauto-phinf.pstatic.net/20201201_214/auto_1606794934587jrJkp_PNG/20201201125521_f6qCMA8X.png?type=f160_116",
         'car_maker_img': "https://imgauto-phinf.pstatic.net/20170707_151/auto_1499404806991Xuw2o_PNG/20170707142004_4ANaTv3h.png?type=f31_31",
         'car_type': "준대형",
-        'car_fuel': "디젤, 가솔린",
-        'car_fuel_efficiency': "8.7~10.7km/ℓ",
-        'car_fuel_basic': 8.7,
-        'car_price_full': "9,970~1억1,860만원",
-        'car_price': 9970
+        'car_fuel': "가솔린",
+        'car_fuel_efficiency': "6.4~9.2ℓ/100km",
+        'car_fuel_basic': 9.1,
+        'car_price_full': "1억60만원~1억1,960만원",
+        'car_price': 10060
     }
     db.carInfo.insert_one(doc)
     print('완료!!')
 
 ## 실행하기
-insert_cars()
-#insert_test()
+#insert_cars()
+insert_test()
 #get_urls()
