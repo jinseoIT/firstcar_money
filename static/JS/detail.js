@@ -72,20 +72,20 @@ const listComment = function() {
                 let li_tag = document.createElement("li");
                 li_tag.setAttribute("class","comment_group");
                 if(comment_nickname === userName){
-                    let list_html = `<div class="id_time">
-                                    <h3>${comment_nickname}</h3>
-                                    <span>${comment_currentTime}</span>
+                    let list_html =
+
+                    `<div class="comment_info">
+                                    <div class="timeAndId">
+                                        <h3>${comment_nickname}</h3>
+                                        <span>${comment_currentTime}</span>
+                                    </div>
+                                    <div class="comment">${comment}</div>
                                 </div>
-                                <div class="comment">${comment}</div>
                                 <div class="buttons-group">
-                                    <!--        수정 버튼               -->
-                                    <button id = ${comment_id} class="modified"
-                                    onclick="openModal('${cmmt._id}','${cmmt.nickname}', '${cmmt.comment}', '${cmmt.reg_dt}')">
-                                    <i class="far fa-edit"></i>
-                                    </button>
-                                     <!--        삭제 버튼               -->
-                                    <button id = ${comment_id} class="delete" onclick="deleteList(this.id)" ><i class="fas fa-trash-alt"></i></button>
-                                </div>`
+                                    <button id = ${comment_id} class="modified" onclick="openModal('${cmmt._id}','${cmmt.nickname}', '${cmmt.comment}', '${cmmt.reg_dt}')"><i class="far fa-edit"></i></button>
+                                    <button class="delete" id = ${comment_id} onclick="deleteList(this.id)"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                    `
                 li_tag.innerHTML = list_html;
                 ul_tag.appendChild(li_tag);
                 }else{
@@ -297,6 +297,7 @@ document.addEventListener("DOMContentLoaded", listComment)
 //document.addEventListener("DOMContentLoaded", carIdCheck)
 submitBtn.addEventListener("click", saveDb);
 textarea.addEventListener("click", auth);
+
 
 
 
