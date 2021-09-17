@@ -26,7 +26,7 @@ app.register_blueprint(comment.api_comment)
 
 client = MongoClient('mongodb+srv://' + dbId + ':' + dbPw +'@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'''
                                                            '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
 
 # main

@@ -51,9 +51,14 @@
         <!--  차량 카드   -->
           {% for carInfo in carList %}
             <div class="car_card">
+              <a href="/car/detail/{{ carInfo._id }}">
               <div class="card_img_area">
-                  <a href="/car/detail/{{ carInfo._id }}"><img src="{{ carInfo.car_img }}"></a>
+                <div class="logo">
+                    <img src="{{carInfo.car_maker_img}}">
+                </div>
+                    <img src="{{ carInfo.car_img }}">
               </div>
+              </a>
               <strong>{{ carInfo.car_name }}</strong>
               <dl>
                 <dt>가격</dt>
@@ -119,9 +124,14 @@
     for (let i=0; i<list.length;i+=1) {
       str += `<div class="car_card">
         <div class="card_img_area">
-           <a href="/car/detail/${list[i]._id}">
-          <img src="${list[i].car_img}">
-           </a>
+         <a href="/car/detail/${list[i]._id}">
+              <div class="card_img_area">
+                <div class="logo">
+                    <img src="${list[i].car_maker_img}">
+                </div>
+                    <img src="${list[i].car_img}">
+              </div>
+          </a>
         </div>
         <strong>${list[i].car_name}</strong>
         <dl>

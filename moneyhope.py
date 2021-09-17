@@ -15,37 +15,40 @@ dbPw = os.getenv('DB_ADMIN_PW')
 client = MongoClient(
     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                            '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
 app_money = Blueprint('api_money', __name__, template_folder="templates")
 
 
 @app_money.route('/car/from-range')
 def your_money():
-    user_min_money = request.args.get("min-money")
-    print(user_min_money)
-    if user_min_money:
-        user_min_money = int(user_min_money.replace(",", "").replace("만원",""))
-        user_max_money = user_min_money + 1000
-        user_car = list(db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}},{'_id': False}))
 
-        if len(user_car) < 5:
-            car_5 = random.sample(user_car, len(user_car))
-        else:
-            car_5 = random.sample(user_car, 5)
-
-        return jsonify({"carlist": car_5})
+    user_car = list(db.carInfo.find({'car_price': {"$gte": 2000, "$lte": 3000}},{'_id': False}))
+    if len(user_car) < 5:
+        carList = random.sample(user_car, len(user_car))
     else:
+        carList = random.sample(user_car, 5)
 
-        return render_template('moneycar.html')
+    return render_template('moneycar.html', carList = carList)
 
 
 
 # 연봉별 차량조회 API[test]
-@app_money.route('/api/car/by-money', methods=['GET'])
+@app_money.route('/api/car/from-range', methods=['GET'])
 def getCarList_byMoney():
-    print('타나')
-    #limit = 5
-    car_list = list(db.carInfo.find({"car_price": {"$gt": 2000, "$lt":3000}}, {'_id': False}))
+    user_min_money = request.args.get("min-money")
+    carList = []
 
-    return jsonify({"success": True, "carList": car_list})
+    if user_min_money:
+        user_min_money = int(user_min_money)
+        user_max_money = user_min_money + 1000
+
+        user_car = list(
+            db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}, {'_id': False}))
+
+    if len(user_car) < 5:
+        carList = random.sample(user_car, len(user_car))
+    else:
+        carList = random.sample(user_car, 5)
+
+    return jsonify({"carList": carList})

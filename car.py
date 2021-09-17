@@ -12,7 +12,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 client = MongoClient('mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
             '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
 # 차량 리스트 페이지
 @api_car.route('/car/list')
