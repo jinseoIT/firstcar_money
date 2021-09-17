@@ -80,15 +80,4 @@ if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
 
  
-    # isLogin = False
-    # mytoken = request.cookies.get("token")
-    # try:
-    #     jwt.decode(mytoken, jwtKey, algorithms=[jwtAlgorithm])
     
-    # except jwt.exceptions.DecodeError:
-    #     print("로그인해라")
-    #     return jsonify({"isLogin":isLogin, "msg":"로그인 해주세요"})
-    
-    # except jwt.ExpiredSignatureError:
-    #     print("시간다됬다")
-    #     return jsonify({"isLogin": isLogin, "msg": "로그인 시간이 만료되었습니다"})
