@@ -12,7 +12,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 client = MongoClient('mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
             '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
 # 차량 리스트 페이지
 @api_car.route('/car/list')
@@ -59,19 +59,26 @@ def getCarList():
     return jsonify({"success": True, "carList": car_list})
 
 
+# 1. carList 페이지에서 사진 클릭한 차량 고유 id가 url에 담겨져서 detail 페이지로 을 넘어온다.
+# 2. 차량 고유 id 값을 carId라는 변수에 담아 detail 페이지에 전달해준다.
+# 3. 클라이언트에서 할것 : jinja2 템플릿을 사용하여, input type="hidden"에 value="{{carId}}"로 담아준다.
+# 4. 클라이언트에서 할것 : JS querySelector로 현재 가지고 있는 carId에 접근한다.
+# 5. 클라이언트에서 할것 : 댓글 저장 요청 API, saveDb 함수에 carId를 carId_give로 서버에 전달하여 몽고db에 저장한다.
 @api_car.route('/car/detail/<keyword>')
 def detail(keyword):
     carId = keyword
     carInfo = db.carInfo.find_one({'_id': ObjectId(carId)})
     carInfo["_id"] = str(carInfo["_id"])
-    return render_template('detail.html', carInfo= carInfo)
+    return render_template('detail.html', carInfo= carInfo , carId= carId)
 
-@api_car.route('/api/carInfo-check', methods=['POST'])
-def checking():
-    carId_receive = request.form['carId_give']
-    carInfos = list(db.carInfo.find({'_id': ObjectId(carId_receive)}))
-    for carinfo in carInfos:
-            carinfo["_id"] = str(carinfo["_id"])
-    print(carInfos)
-    return jsonify({"success": True, "carInfo" : carInfos})
+
+# 바로 jinja2로 뿌려 주기 떄문에 필요없는 API
+# @api_car.route('/api/carInfo-check', methods=['POST'])
+# def checking():
+#     carId_receive = request.form['carId_give']
+#     carInfos = list(db.carInfo.find({'_id': ObjectId(carId_receive)}))
+#     for carinfo in carInfos:
+#             carinfo["_id"] = str(carinfo["_id"])
+#     print(carInfos)
+#     return jsonify({"success": True, "carInfo" : carInfos})
 

@@ -1,0 +1,143 @@
+.container__slider_area {
+  width: 50%;
+  margin: 50px auto;
+}
+
+.container__slider_area .slide_price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-container {
+  position: relative;
+}
+.slider-container .track {
+  width: 100%;
+  height: 6px;
+  background: #ccc;
+}
+
+.slider-container .track .progress {
+  width: 100%;
+  height: 100%;
+  background: #0066ff;
+  transform-origin: 0;
+}
+
+.slider-container .thumb {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -7px;
+  border-radius: 50px;
+  transform: translate(-50%);
+  -webkit-user-select: none;
+}
+
+.slider-container .thumb .thumb-indicator {
+  width: 100%;
+  height: 100%;
+  background: #0066ff;
+  border-radius: 50px;
+}
+
+.slider-container .thumb .thumb-indicator.focus {
+  transform: scale(1.3);
+}
+
+.slider_price {
+  color: #13CE66;
+}
+
+.title_car__container {
+  margin-bottom: 75px;
+}
+.title_car__area {
+  display: flex;
+}
+
+.title_car__area .img__area,
+.car_info__area{
+  width : 50%;
+  position: relative;
+}
+
+.title_car__area .img__area img {
+  width: 70%;
+  object-fit: cover;
+  transition: all ease-in 200ms;
+  cursor: pointer;
+}
+
+.title_car__area .img__area img:hover {
+  position: relative;
+  transform: translateX(-25px);
+}
+
+.title_car__area .img__area .logo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left:0;
+  top: 0;
+}
+
+
+
+.title_car__area .img__area .car_name {
+  position: absolute;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 26px;
+  color: #000;
+  left: 50px;
+  top: 3px;
+}
+
+.title_car_info {
+  display: inline-block;
+  padding-top: 9px;
+  vertical-align: top;;
+}
+
+.car_info__area dl dt {
+  float: left;
+  width: 33px;
+  color: #000;
+  opacity: .5;
+}
+
+.car_info__area .price {
+  float: left;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 26px;
+  color: #00c34c;
+}
+
+.car_info__area .detail_lst {
+  clear:both;
+  margin: 0;
+}
+
+.car_info__area .detail_lst dt {
+  width: 55px;
+  padding-top: 6px;
+  font-size:20px;
+  font-weight: normal;
+  line-height: 30px;
+  color: #000;
+  opacity: .5;
+}
+
+.car_info__area .detail_lst dd {
+  padding-top: 6px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 30px;;
+  color: #000;
+}
+
+.title_car_info {
+  margin-top: 15px;
+}
