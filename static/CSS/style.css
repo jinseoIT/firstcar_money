@@ -96,6 +96,10 @@ body {
 .footer__container {
     background-color: #2c2a2a;
     color: #fff;
+    padding : 50px;
+    /*height : 250px;*/
+    /*display: flex;*/
+    /*align-items: center;*/
 }
 
 .footer__container .logoAndDesc {
@@ -126,9 +130,7 @@ body {
 }
 
 .footer__container .container .row .menuAndTeam .menubar .menus {
-    display: flex;
-    font-size: 1.2rem;
-    justify-content: space-between;
+    display : none;
 }
 
 .footer__container .container .row .menuAndTeam .team {
@@ -158,8 +160,14 @@ body {
 
 .footer__container .container .row .menuAndTeam .team .member {
     font-size: 0.9rem;
+    transition: all 0.5s;
 }
 
+.footer__container .container .row .menuAndTeam .team .member:hover {
+    color : #0066ff;
+    position: relative;
+    transform: translateY(-5px);
+}
 
 @media screen and (max-width: 768px) {
 
@@ -235,7 +243,7 @@ body {
         margin-bottom: 10px;
         background-color: #f0f4f5;
         display: block;
-        color: #0066ff;
+        color : #2c2a2a;
         width: 70%;
         text-align: center;
         border-radius: 6px;

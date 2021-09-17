@@ -170,6 +170,17 @@
             transform : translateY(-40px);
         }
 
+        /* youtube */
+        #plyaer {
+            widht: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+
+
+
         @media screen and (max-width: 768px) {
 
             section .saler{

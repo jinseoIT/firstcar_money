@@ -80,38 +80,6 @@
 =======
     <link rel="stylesheet" href="../static/CSS/main.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollToPlugin.min.js" integrity="sha512-1OG9UO4krPizjtz/c9iDbjCqtXznBYdJeD4ccPaYfJHzC6F1qoQ3P1bgQ3J8lgCoK5qGVCqsY4+/RKjLDzITVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
-    integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <style>
-        #to-top {
-            width: 42px;
-            height: 42px;
-            background-color: #333;
-            color: #fff;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9;
-            background-image: url("https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/ffffff/external-up-arrow-miscellaneous-kiranshastry-solid-kiranshastry.png");
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
 </head>
         <body>
 
@@ -160,34 +128,10 @@
             </div>
         </section>
         <div id="to-top">
-    <div class="material-icons"></div>
-</div>
+            <div class="material-icons"></div>
+        </div>
     {% include '/common/footer.html' %}
-    <script>
-        const toTopEl = document.querySelector('#to-top');
 
-        window.addEventListener('scroll', _.throttle(function () {
-            console.log(window.scrollY);
-            if (window.scrollY > 700) {
-                //버튼 보이기!
-                gsap.to(toTopEl, .2, {
-                    x: 0
-                });
-            } else {
-                //버튼 숨기기!
-                gsap.to(toTopEl, .2, {
-                    x: 100
-                });
-            }
-        }, 300));
-        // _.throttle(함수, 시간)
-
-        toTopEl.addEventListener('click', function () {
-            gsap.to(window, .7, {
-                scrollTo: 0
-            });
-        });
-    </script>
         </body>
 </html>
 >>>>>>> f144e17087315c9aef3c9d2a64d18530a711bca3
