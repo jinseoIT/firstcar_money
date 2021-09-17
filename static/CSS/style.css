@@ -213,6 +213,10 @@ body {
 
 
     /*  Footer  */
+
+    .footer__container{
+        z-index: 10000;
+    }
     .footer__container .logoAndDesc {
         margin-top: 20px;
         display: flex;
