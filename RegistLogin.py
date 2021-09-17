@@ -15,7 +15,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 client = MongoClient(
     'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                            '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
     # 유저가 입력한 아이디, 패스워드
 def check_Regist(user_Email,user_Nick,user_PassWord,PassWord_Access):
