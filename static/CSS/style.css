@@ -212,6 +212,11 @@ body {
         align-items: center;
         justify-content: center;
     }
+        .footer__container .logoAndDesc .wowlogo {
+            display: block;
+        margin-bottom: 10px;
+
+    }
 
     .footer__container .logoAndDesc .teamDesc {
         color: #fff;
