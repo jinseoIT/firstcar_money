@@ -1,36 +1,50 @@
 .signin {
-    padding: 100px 50px;
+    /*padding: 100px 50px;*/
+    height : 100vh;
     background-image: url("/static/Img/spotcar.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+    display : flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.logogo{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .signin h1 {
-    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
-    color: #fff;
     font-size: 30px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 24px;
 }
+
 .signin__card {
     width: 400px;
     margin: 0 auto;
     border-radius: 6px;
     background-color: #f1f3f5;
     box-shadow: 2px 2px 20px rgba(0, 0, 0 .3);
+    padding-bottom : 30px;
+    box-shadow: 15px 14px 24px -12px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 15px 14px 24px -12px rgba(0, 0, 0, 0.5);
+
 }
-.signin__card h2 {
-    padding: 30px;
-    font-size: 18px;
+.signin__card h1{
+    padding-top : 30px;
+    padding-bottom : 10px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
 }
-.signin__card h2 strong {
-    font-weight: 700;
-    color: #0066ff;
+
+.main_logo img{
+    text-align: center;
+    width: 200px;
 }
+
 .signin__card form {
     padding: 12px 22px;
 }
@@ -46,6 +60,18 @@
     outline: none;
     box-sizing: border-box;
     font-size: 14px;
+}
+
+#ID_Input{
+    margin-bottom: 30px;
+}
+
+#passWord_Input{
+    margin-bottom: 30px;
+}
+
+.login__join{
+    margin-top : 20px;
 }
 .signin__card form .login__join {
     display: flex;

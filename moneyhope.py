@@ -1,5 +1,4 @@
 import json
-
 from flask import request, Blueprint, Flask, render_template, jsonify
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -22,6 +21,12 @@ app_money = Blueprint('api_money', __name__, template_folder="templates")
 
 @app_money.route('/car/from-range')
 def your_money():
+    user_min_money = request.args.get("min-money")
+
+    if user_min_money:
+        user_min_money = int(user_min_money.replace(",", "").replace("만원",""))
+        user_max_money = user_min_money + 1000
+        user_car = list(db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}},{'_id': False}))
 
     user_car = list(db.carInfo.find({'car_price': {"$gte": 2000, "$lte": 3000}}).limit(40))
 
