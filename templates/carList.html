@@ -52,6 +52,7 @@
           {% for carInfo in carList %}
             <div class="car_card">
               <div class="card_img_area">
+                  {#  사진을 클릭하면 해당 차량 고유 아아디 carInfo._id를 url에 실어서 상세페이지로 넘어간다. #}
                   <a href="/car/detail/{{ carInfo._id }}"><img src="{{ carInfo.car_img }}"></a>
               </div>
               <strong>{{ carInfo.car_name }}</strong>
