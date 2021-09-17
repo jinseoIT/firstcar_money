@@ -23,13 +23,15 @@ app_money = Blueprint('api_money', __name__, template_folder="templates")
 @app_money.route('/car/from-range')
 def your_money():
 
-    user_car = list(db.carInfo.find({'car_price': {"$gte": 2000, "$lte": 3000}},{'_id': False}))
+    user_car = list(db.carInfo.find({'car_price': {"$gte": 2000, "$lte": 3000}}).limit(40))
+
     if len(user_car) < 5:
         carList = random.sample(user_car, len(user_car))
     else:
         carList = random.sample(user_car, 5)
-
-    return render_template('moneycar.html', carList = carList)
+    carInfo = carList[0]
+    carList.pop(0)
+    return render_template('moneycar.html', carList = carList, carInfo = carInfo)
 
 
 
@@ -44,11 +46,14 @@ def getCarList_byMoney():
         user_max_money = user_min_money + 1000
 
         user_car = list(
-            db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}, {'_id': False}))
+            db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}).limit(40))
 
     if len(user_car) < 5:
         carList = random.sample(user_car, len(user_car))
     else:
         carList = random.sample(user_car, 5)
+
+        for _list in carList:
+            _list["_id"] = str(_list["_id"])
 
     return jsonify({"carList": carList})
