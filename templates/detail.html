@@ -8,7 +8,7 @@
         <!-- header  -->
         {% include '/common/header.html' %}
 
-        <input type="hidden" id="carid_info" value="{{ car_id }}">
+        <input type="hidden" id="carid_info" value="{{ carId }}">
         {#     body       #}
         <section class="car_detail">
                   <div class="container">
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="description">
                                     <h1>{{carInfo.car_name}}</h1>
-                                    <strong>{{carInfo.car_age}}</strong>
+                                    <strong>{{carInfo.car_age}}형</strong>
                                     <ul>
                                          <li><span>가격</span>{{carInfo.car_price_full}}</li>
                                          <li><span>연비</span>{{carInfo.car_fuel_efficiency}}</li>
@@ -42,6 +42,7 @@
                             </div>
                         </div>
                     </div>
+                  </div>
         </section>
         {# 댓글 영역 #}
         <article>
@@ -54,30 +55,29 @@
                             <textarea class="comment_area" placeholder="자동차에 대하여 자유롭게 글을 써주세요!"></textarea>
                             <div class="buttons-group">
                                 <button type="submit" class="submitBtn">제출</button>
-                                <button type="button">취소</button>
                             </div>
                         </div>
                         <ul class="comment_list">
 
                             <!--  댓글 리스트  -->
-                            <li class="comment_group">
-
-                                <div class="id_time">
-                                    <h3>kokyusik91</h3>
-                                    <span>2021-10</span>
-                                </div>
-
-                                <div class="comment">이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차
-                                    개별로임이 차 이 차 개별로임이 차 개이임이 차 개이 차 개별로임이 차
-                                </div>
-
-
-                                <div class="buttons-group">
-                                    <button class="modified"><i class="far fa-edit"></i></button>
-                                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                                </div>
-
-                            </li>
+{#                            <li class="comment_group">#}
+{##}
+{#                                <div class="id_time">#}
+{#                                    <h3>kokyusik91</h3>#}
+{#                                    <span>2021-10</span>#}
+{#                                </div>#}
+{##}
+{#                                <div class="comment">이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 개이 차 개별로임이 차 이 차 개별로임이 차 개이 차#}
+{#                                    개별로임이 차 이 차 개별로임이 차 개이임이 차 개이 차 개별로임이 차#}
+{#                                </div>#}
+{##}
+{##}
+{#                                <div class="buttons-group">#}
+{#                                    <button class="modified"><i class="far fa-edit"></i></button>#}
+{#                                    <button class="delete"><i class="fas fa-trash-alt"></i></button>#}
+{#                                </div>#}
+{##}
+{#                            </li>#}
 
                         </ul>
                     </div>
@@ -91,12 +91,12 @@
                 <div class="comment_group">
                     <div class="id_time">
                         <input type="hidden" id="modal_cmmt_id"/>
-                        <h3 id="modal_nickName">닉네임</h3>
-                        <span id="modal_reg_dt">2021-02-22</span>
+                        <h3 id="modal_nickName"></h3>
+                        <span id="modal_reg_dt"></span>
                     </div>
                     <textarea id="modal_content" class="modifiRandom"></textarea>
                     <div class="modal-buttons-group">
-                        <button onclick="updateCmmt()" class="confirmBtn" disabled >수정</button>
+                        <button onclick="updateCmmt()" class="confirmBtn" >수정</button>
                         <button class="cancelBtn">취소</button>
                     </div>
                 </div>
