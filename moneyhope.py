@@ -23,7 +23,7 @@ app_money = Blueprint('api_money', __name__, template_folder="templates")
 @app_money.route('/car/from-range')
 def your_money():
     user_min_money = request.args.get("min-money")
-    print(user_min_money)
+
     if user_min_money:
         user_min_money = int(user_min_money.replace(",", "").replace("만원",""))
         user_max_money = user_min_money + 1000
