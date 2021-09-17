@@ -4,3 +4,4 @@ __pycache__
 venv
 init_db.py
 .vscode
+dockerfile
