@@ -1,6 +1,6 @@
 import pymongo
 import requests
-from bs4 import BeautifulSoup
+
 from pymongo import MongoClient
 import re
 import os
@@ -11,7 +11,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 
 client = MongoClient('mongodb+srv://'+dbId+':'+dbPw+'@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                      '=majority')
-db = client.dbfirtcar
+db = client.firstcar
 
 
 
@@ -70,6 +70,7 @@ def get_urls():
 def insert_carInfo(url, pageNum):
 
     strPage = str(pageNum)
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     # data = requests.get('https://auto.naver.com/car/mainList.nhn?page=1', headers=headers)
@@ -112,7 +113,7 @@ def insert_carInfo(url, pageNum):
             'car_price_full': car_price_full,
             'car_price': car_price
         }
-        db.carInfo.insert_one(doc)
+        db.carInfoDev.insert_one(doc)
         print('완료!!', car_name)
 
 # 차량 가격 정규화
@@ -190,23 +191,49 @@ def crulEffi(effi):
 
 def insert_cars():
     # 시판모델 최신 출시일 desc url
-    newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
-    newModelPageCnt = 7
+    #newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
+
+    #newModelPageCnt = 7
+
     # 단종모델 최신 출시일 desc url
-    oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
-    oldModelPageCnt = 35
+    #oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
+    #oldModelPageCnt = 17
+
+    # 해외 모델
+    outCarUrl = 'https://auto.naver.com/car/mainList.nhn?importYn=Y'
+    outCarCnt = 10
 
     #db reset
-    db.carInfo.drop()
+    # 디비 제거
+    #db.carInfo.drop()
+
     # 단종모델 insert
-    for i in range(1, oldModelPageCnt + 1):
-        insert_carInfo(oldModelUrl, i)
+    # for i in range(1, oldModelPageCnt + 1):
+    #     insert_carInfo(oldModelUrl, i)
+    # # 시판모델 insert
+    # for i in range(1, newModelPageCnt+1):
+    #     insert_carInfo(newModelUrl, i)
+    # 해외모델 insert
+    for i in range(1, outCarCnt+1):
+        insert_carInfo(outCarUrl, i)
 
-    # 시판모델 insert
-    for i in range(1, newModelPageCnt+1):
-        insert_carInfo(newModelUrl, i)
-
+def insert_test():
+    doc = {
+        'car_name': "2021 아우디 S6",
+        'car_age': 2021,
+        'car_img': "https://imgauto-phinf.pstatic.net/20210205_120/auto_1612496606060tmTB3_PNG/20210205124311_AogODSLA.png?type=f567_410",
+        'car_maker_img': "https://imgauto-phinf.pstatic.net/20170707_207/auto_1499404828979BICft_PNG/20170707142026_ovRGcdML.png?type=f50_50",
+        'car_type': "준대형",
+        'car_fuel': "디젤",
+        'car_fuel_efficiency': "8.7~10.7km/ℓ",
+        'car_fuel_basic': 8.7,
+        'car_price_full': "1억746만원",
+        'car_price': 17460
+    }
+    db.carInfo.insert_one(doc)
+    print('완료!!')
 
 ## 실행하기
-insert_cars()
+# insert_cars()
+insert_test()
 #get_urls()

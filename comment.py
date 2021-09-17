@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from flask import Flask, jsonify, render_template, request, Blueprint
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
@@ -17,7 +16,7 @@ dbPw = os.getenv('DB_ADMIN_PW')
 client = MongoClient(
      'mongodb+srv://' + dbId + ':' + dbPw + '@firstcar-money.ojfbk.mongodb.net/firstcar-money?retryWrites=true&w'
                                             '=majority')
-db = client.dbfirtcar.comments
+db = client.firstcar.comments
 # client = MongoClient('localhost', 27017)
 # db = client.test
 
@@ -37,12 +36,15 @@ db = client.dbfirtcar.comments
 ####### 클라에서 보낸 데이터 받아서 db에 저장 ########
 @api_comment.route('/api/comment-add', methods=['POST'])
 def saving():
+    
     userId_receive = request.form['userId_give']
     nickname_receive = request.form['nickname_give'];
     comment_receive = request.form['comment_give'];
     nowDt = datetime.today().strftime("%Y-%m-%d %H:%M:%S");
     token_receive = request.form['token_give'];
+    carId_receive = request.form['carId_give'];
 
+    print("ㅁㄴㅇㅁㄴㅇ",carId_receive)
 
     # 몽고 db에 들어갈 데이터 doc 양식 (몽고 db는 카멜케이스로 작성 권유!)
     doc = {
@@ -50,7 +52,8 @@ def saving():
         "nickname" : nickname_receive,
         "comment" : comment_receive,
         "reg_dt" : nowDt,
-        "token" : token_receive
+        "token" : token_receive,
+        "carId" : carId_receive
     }
     # print(doc)
 
@@ -60,15 +63,16 @@ def saving():
 
 
 
-########## 클라가 요청 보내면 데이터베이스에 있던 댓글들 다 보내주기 ##########
+# 클라이언트에서 요청을 보내면 몽고db에 있는 데이터들을 조건에 맞게 조회하여 다시 클라이언트로 전달한다.
+# 추가로 GET 요청으로 넘어온 carId 데이터와 몽고db에 comment doc 에 들어가있는 carId 데이터를 비교하여,
+# 두 데이터의 값이 같을때의 comment정보("userId","nickname","comment","reg_dt","token","carId")를 'comment'에 담아서 클라이언트에 보내준다.
 @api_comment.route('/api/comment-list', methods=['GET'])
 def listing():
-    # db에서 가져올때 최신순으로 가져오는 것을 한번 찾아보자.
-    # comment_lists = list(db.comment.find({ }))
-    comment_lists = list(db.find({}).sort("reg_dt", -1))
+    carUuid = request.args.get('carId')
+    comment_lists = list(db.find({"carId" : carUuid}).sort("reg_dt", -1))
     for comment_list in comment_lists:
         comment_list["_id"] = str(comment_list["_id"])
-
+    print(comment_lists)
     return jsonify({"success": True, 'comment': comment_lists})
 
 

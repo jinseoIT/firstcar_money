@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     {% include '/common/head.html' %}
-    <link rel="stylesheet" href="/static/CSS/video.css">
+    <link rel="stylesheet" href="/static/CSS/video.css" />
     <script src="/static/JS/youtube.js" defer></script>
     <link rel="stylesheet" href="../static/CSS/main.css">
+    <script src="/static/JS/common.js" defer></script>
+      <script src="/static/JS/main.js" defer></script>
 
-    </style>
-        </head>
+</head>
         <body>
+
         <!-- header  -->
         {% include '/common/header.html' %}
         <!-- youtube -->
         <section class="youtube container-fluid">
             <div class="youtube__area row">
                 <div id="player" class="video col-12"></div>
-            </div>
+             </div>
         </section>
         <!-- 차량 링크 -->
         <section class="container">
             <div class="linkPage">
                 <div class="page">
-                    <a href="/api/car/from-range" class="text">연봉별 차량 보러가기</a>
+                    <a href="/car/from-range" class="text">연봉별 차량 보러가기</a>
                     <hr width="95%">
-                    <a href="/api/car/from-range" class="img"></a>
+                    <a href="/car/from-range" class="img"></a>
                     <button onclick="location.href='/api/car/from-range'" class="btn">연봉별 차량 보러가기</button>
                 </div>
                 <div class="page">
@@ -35,9 +37,10 @@
             </div>
         </section>
         <!-- 중고차 사이트 링크 -->
-        <section>
+        <section class="recommend">
             <div class="site"> 중고차 사이트 TOP4</div>
             <div class="site_content">신차가 부담되는 사회초년생들을 위한 중고차 사이트를 소개합니다</div>
+            <hr class="saler" width="40%">
             <br width="100%">
             <div class="usedCarTop4">
                 <div class="usedCarSite">
@@ -52,6 +55,11 @@
                 </div>
             </div>
         </section>
+        <div id="to-top">
+            <div class="material-icons"></div>
+        </div>
+    </section>
+
     {% include '/common/footer.html' %}
-    </body>
+  </body>
 </html>
