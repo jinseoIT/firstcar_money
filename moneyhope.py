@@ -45,12 +45,12 @@ def your_money():
 def getCarList_byMoney():
     user_min_money = request.args.get("min-money")
     carList = []
-    print('1', user_min_money)
+
     if user_min_money:
         user_min_money = int(user_min_money)
         user_max_money = user_min_money + 1000
 
-    print(user_min_money, user_max_money);
+
     user_car = list(
         db.carInfo.find({'car_price': {"$gte": user_min_money, "$lte": user_max_money}}))
 
@@ -59,7 +59,7 @@ def getCarList_byMoney():
     else:
         carList = random.sample(user_car, 5)
 
-    print(carList)
+
     for _list in carList:
         _list["_id"] = str(_list["_id"])
 
