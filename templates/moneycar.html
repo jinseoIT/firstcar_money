@@ -36,7 +36,7 @@
 
             <div class="img__area">
               <span id="mainCar_name" class="car_name">{{carInfo.car_name}}</span>
-                <a href="/car/detail/{{ carInfo._id }}">
+                <a href="/car/detail/{{ carInfo._id }}" id="mainCar_detail_link">
                     <img src="{{carInfo.car_img}}"  id ="mainCar_img">
                     <div class="logo">
                         <img src="{{carInfo.car_maker_img}}"  id="mainCar_logo">
@@ -110,7 +110,6 @@
 
     const init = () => getCarListFromMoney(3000);
     function getCarListFromMoney (money) {
-        console.log('내연봉 = '+ money);
         fetch(`/api/car/from-range?min-money=${money}`)
           .then(res => res.json())
           .then(data => renderData(data))
@@ -120,7 +119,6 @@
     /* 차량 정보들을 넣어준다. */
     function renderData(data){
         const _list = data.carList;
-        console.log(_list);
       if(_list){
         setMainCar(_list[0]);
         setSubCars(_list);
@@ -128,7 +126,6 @@
     }
 
     const setMainCar = (carInfo) => {
-        console.log('차량정보', carInfo);
         document.querySelector('#mainCar_img').src = carInfo.car_img;
         document.querySelector('#mainCar_logo').src = carInfo.car_maker_img;
         document.querySelector('#mainCar_price').innerText = carInfo.car_price_full;
@@ -137,6 +134,7 @@
         document.querySelector('#mainCar_fuel').innertText = carInfo.car_fuel;
         document.querySelector('#mainCar_name').innerText = carInfo.car_name;
         document.querySelector('#mainCar_type').innerText = carInfo.car_type;
+        document.querySelector('#mainCar_detail_link').setAttribute('href', `/car/detail/${ carInfo._id }`)
     }
 
     const setSubCars = (list) => {

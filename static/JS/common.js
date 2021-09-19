@@ -1,7 +1,7 @@
  const toTopEl = document.querySelector('#to-top');
 
         window.addEventListener('scroll', _.throttle(function () {
-            console.log(window.scrollY);
+
             if (window.scrollY > 700) {
                 //버튼 보이기!
                 gsap.to(toTopEl, .2, {
