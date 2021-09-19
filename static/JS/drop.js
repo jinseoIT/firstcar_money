@@ -26,14 +26,14 @@ function range(e, price) {
 
 
 function show_price(e) {
-    console.log(e);
+    //console.log(e);
     range(e, e.path[0].id.replace("d", ""))
 
 }
 
 
 function point_image(e) {
-    console.log(e);
+    //console.log(e);
     const img = new Image();
 
     e.dataTransfer.setDragImage(img, 0, 0);

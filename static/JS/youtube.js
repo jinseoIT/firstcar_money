@@ -1,6 +1,5 @@
 document.cookie = "safeCookie1=foo; SameSite=Lax"; document.cookie = "safeCookie2=foo"; document.cookie = "crossCookie=bar; SameSite=None; Secure";
 
-출처: https://ifuwanna.tistory.com/223 [IfUwanna IT]
 // 2. This code loads the IFrame Player API code asynchronously.
  var tag = document.createElement('script');
 
@@ -17,6 +16,7 @@ function onYouTubeIframeAPIReady() {
      playerVars: {
        autoplay: true,  // 자동 재생 유무
        loop: true, // 반복 재생 유무
+        mute: 1,
        playlist: 'OpDZJRJ6W1Y' // 반복 재생할 유튜브 영상 ID목록
      },
      events: {

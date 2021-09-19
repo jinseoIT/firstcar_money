@@ -115,7 +115,6 @@ const saveDb = function(){
         alert("댓글을 작성해 주세요!")
         return
     }else{
-        console.log(`유저아이디 : ${userID}, 유저 닉네임 : ${userName},  유저 토큰 : ${token}, 유저 댓글 ${comment}`)
         $.ajax({
                     type: "POST",
                     url: "/api/comment-add",
@@ -128,7 +127,6 @@ const saveDb = function(){
                     },
                     success: function (response) {
                         alert(response["msg"]);
-                        console.log(response);
                         window.location.reload()
                     }
                 })
@@ -148,7 +146,6 @@ const deleteList = function(parameter){
 
                     success: function (response) {
                         alert(response["msg"]);
-                        console.log(response);
                         window.location.reload()
                     }
                 })
@@ -170,7 +167,6 @@ const openModal = function(...obj){
     content.value = obj[2];
     regDt.innerText = obj[3];
 
-    console.log(cmmtId.value,nick.innerText,content.value,regDt.innerText)
 }
 
 const updateCmmt =  () => {
@@ -286,12 +282,11 @@ const closeLoginModal = ()=>{
 const auth =()=>{
     //e.preventDefault();
     // 토큰이 없으면!
-    if(!token){
+    if(!token) {
         loginModal.classList.remove("modalOutside-hide");
-        closeBtn.addEventListener("click",closeLoginModal);
-        textarea.disabled= true;
-    }else
-        console.log("로그인 됬어!");
+        closeBtn.addEventListener("click", closeLoginModal);
+        textarea.disabled = true;
+    }
 }
 
 
