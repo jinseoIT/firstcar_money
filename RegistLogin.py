@@ -68,8 +68,8 @@ def check_Login(user_Email,user_PassWord):
                 "nick": user_Nick,
                 'exp': datetime.utcnow() + timedelta(seconds=60)
             }
-            Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)
-            # .decode('utf8')
+            Token = jwt.encode(jwtPayload, jwtKey, jwtAlgorithm)\
+                # .decode('utf8')
 
             userInfo = { 'userId': user_id, 'userName' : user['user_Nick']}
 
