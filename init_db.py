@@ -191,13 +191,13 @@ def crulEffi(effi):
 
 def insert_cars():
     # 시판모델 최신 출시일 desc url
-    #newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
+    newModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=OS&order=1&importYn=N&lnchYY=-1&saleType=-1"
 
-    #newModelPageCnt = 7
+    newModelPageCnt = 7
 
     # 단종모델 최신 출시일 desc url
-    #oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
-    #oldModelPageCnt = 17
+    oldModelUrl = "https://auto.naver.com/car/mainList.nhn?mnfcoNo=0&modelType=DC&order=1&importYn=N"
+    oldModelPageCnt = 17
 
     # 해외 모델
     outCarUrl = 'https://auto.naver.com/car/mainList.nhn?importYn=Y'
@@ -208,11 +208,11 @@ def insert_cars():
     #db.carInfo.drop()
 
     # 단종모델 insert
-    # for i in range(1, oldModelPageCnt + 1):
-    #     insert_carInfo(oldModelUrl, i)
-    # # 시판모델 insert
-    # for i in range(1, newModelPageCnt+1):
-    #     insert_carInfo(newModelUrl, i)
+    for i in range(1, oldModelPageCnt + 1):
+         insert_carInfo(oldModelUrl, i)
+    # 시판모델 insert
+    for i in range(1, newModelPageCnt+1):
+         insert_carInfo(newModelUrl, i)
     # 해외모델 insert
     for i in range(1, outCarCnt+1):
         insert_carInfo(outCarUrl, i)
@@ -234,6 +234,6 @@ def insert_test():
     print('완료!!')
 
 ## 실행하기
-# insert_cars()
-insert_test()
+insert_cars()
+#insert_test()
 #get_urls()
